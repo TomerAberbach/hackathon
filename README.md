@@ -4,7 +4,7 @@
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/TomerAberbach/hackathon/blob/master/CONTRIBUTING.md) for contributing guidelines.
+See [CONTRIBUTING.md](https://github.com/TomerAberbach/hackathon/blob/master/.github/CONTRIBUTING.md) for contributing guidelines.
 
 ## License
 
