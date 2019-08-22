@@ -11,7 +11,7 @@ We have two main branches that are never deleted:
 * The `develop` branch, which runs parallel to `master`, always contains the latest delivered development changes for the next "release". We put "release" in quotes because we do not have versioned releases. We simply merge `develop` into `master` when we believe `develop` reflects a production-ready state.
 
 We also two types of branches which are frequently created and deleted:
-* A feature branch, prefixed with `feature/`, must branch from `develop`. It can be discarded, or merged into `develop` and then deleted. A feature branch should have a cohesive goal. This includes implementing actual features, functionality which other feature branches require, or any other targeted well-scoped changes. A feature branch may be rebased onto the branch tip of `develop` at any time to pick up new changes.
+* A feature branch, prefixed with `feature/`, must branch from `develop`. It can be discarded, or merged into `develop` and then deleted. A feature branch should have a cohesive goal. This includes implementing actual features, functionality which other feature branches require, or any other targeted well-scoped changes. The `develop` branch can be merged into a feature branch to pick up new changes.
 * A hotfix branch, prefixed with `hotfix/`, must branch from `master`. It can be discarded, or merged into both `master` and `develop` and then deleted. A hotfix branch should only be used to fix bugs on `master`. Of course, we aim to minimize the use of hotfix branches by not introducing bugs into `master`.
 
 The text after branch prefixes should be in dash-case.
