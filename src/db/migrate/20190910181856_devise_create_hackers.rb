@@ -4,18 +4,18 @@ class DeviseCreateHackers < ActiveRecord::Migration[6.0]
   def change
     create_table :hackers do |t|
       ## Database authenticatable
-      t.string :email,                null: false, default: ""
-      t.string :encrypted_password,   null: false, default: ""
-      t.string :first_name,           null: false, default: ""
-      t.string :last_name,            null: false, default: ""
-      t.string :level_of_study,       null: false, default: ""
-      t.string :major,                null: false, default: ""
-      t.string :shirt_size,           null: false, default: ""
-      t.string :dietary_restrictions, null: false, default: ""
-      t.string :special_needs,        null: false, default: ""
-      t.string :date_of_birth,        null: false, default: ""
-      t.string :gender,               null: false, default: ""
-      t.string :education,            null: false, default: ""
+      t.string :email,                null: false, default: ''
+      t.string :encrypted_password,   null: false, default: ''
+      t.string :first_name,           null: false, default: ''
+      t.string :last_name,            null: false, default: ''
+      t.string :level_of_study,       null: false, default: ''
+      t.string :major,                null: false, default: ''
+      t.string :shirt_size,           null: false, default: ''
+      t.string :dietary_restrictions, null: false, default: ''
+      t.string :special_needs,        null: false, default: ''
+      t.string :date_of_birth,        null: false, default: ''
+      t.string :gender,               null: false, default: ''
+      t.string :education,            null: false, default: ''
 
 
       ## Recoverable
