@@ -13,7 +13,7 @@ class DeviseCreateHackers < ActiveRecord::Migration[6.0]
       t.string :shirt_size,           null: false, default: ''
       t.string :dietary_restrictions, null: false, default: ''
       t.string :special_needs,        null: false, default: ''
-      t.string :date_of_birth,        null: false, default: ''
+      t.date   :date_of_birth,        null: false
       t.string :gender,               null: false, default: ''
       t.string :education,            null: false, default: ''
 

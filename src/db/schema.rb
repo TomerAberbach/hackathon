@@ -25,12 +25,14 @@ ActiveRecord::Schema.define(version: 2019_09_10_181856) do
     t.string "shirt_size", default: "", null: false
     t.string "dietary_restrictions", default: "", null: false
     t.string "special_needs", default: "", null: false
-    t.string "date_of_birth", default: "", null: false
+    t.date "date_of_birth", null: false
     t.string "gender", default: "", null: false
     t.string "education", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.boolean "checked_in", default: false, null: false
+    t.boolean "waitlisted", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_hackers_on_email", unique: true
