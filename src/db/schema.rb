@@ -39,6 +39,24 @@ ActiveRecord::Schema.define(version: 2019_09_10_193901) do
     t.index ["reset_password_token"], name: "index_hackers_on_reset_password_token", unique: true
   end
 
+  create_table "metadata", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.text "tags", null: false
+    t.string "host", null: false
+    t.string "email", null: false
+    t.integer "capacity", null: false
+    t.date "date"
+    t.time "time"
+    t.string "address_one"
+    t.string "address_two"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
