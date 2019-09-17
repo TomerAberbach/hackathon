@@ -1,0 +1,11 @@
+metadata:
+  name: HackTCNJ
+  description: An awesome hackathon!
+  tags:
+    - hack
+    - tcnj
+    - awesome
+    - code
+  host: TCNJ
+  email: acm@tcnj.edu
+  capacity: 200
