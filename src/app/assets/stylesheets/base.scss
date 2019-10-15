@@ -1,0 +1,33 @@
+@import "variables";
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $body-font-family;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header, h1, h2, h3, h4, h5, h6 {
+  font: {
+    family: $heading-font-family;
+    weight: normal;
+  }
+}
+
+p, label, input, textarea, select {
+  font-size: 13pt;
+}
+
+a {
+  text-decoration: none;
+}
+
+table {
+  width: 100%;
+}

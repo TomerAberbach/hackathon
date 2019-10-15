@@ -1,15 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Hackathon</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    <% title = "#{yield(:title).html_safe} | #{@metadata.name}" %>
+    <title><%= title %></title>
+    <meta itemprop="name" content="<%= title %>"/>
+    <meta property="og:title" content="<%= title %>"/>
+    <meta name="twitter:title" content="<%= title %>"/>
+    <meta property="og:site_name" content="<%= title %>"/>
+
+    <meta name="author" content="<%= @metadata.host %>"/>
+
+    <meta name="keywords" content="<%= @metadata.tags.join(',') %>"/>
+
+    <meta name="description" content="<%= @metadata.description %>"/>
+    <meta itemprop="description" content="<%= @metadata.description %>"/>
+    <meta property="og:description" content="<%= @metadata.description %>"/>
+    <meta name="twitter:description" content="<%= @metadata.description %>"/>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <% if devise_controller? %>
+      <main class="vbox vbox--centering vbox--viewport">
+        <%= yield %>
+      </main>
+    <% elsif controller.class.parent == Dashboard %>
+      <%= render 'layouts/dashboard' %>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

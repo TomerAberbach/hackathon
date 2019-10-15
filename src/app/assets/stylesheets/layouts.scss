@@ -1,0 +1,55 @@
+@import "variables";
+
+.hbox {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+
+  &--centering {
+    align-items: center;
+  }
+
+  &--viewport {
+    height: calc(100vh - 50px);
+  }
+}
+
+.vbox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  &--centering {
+    align-items: center;
+  }
+
+  &--viewport {
+    height: calc(100vh - 50px);
+  }
+}
+
+.min-padded {
+  padding: 5px;
+}
+
+.small-padded {
+  padding: 10px;
+}
+
+.moderate-padded {
+  padding: 15px;
+}
+
+.big-padded {
+  padding: 20px;
+}
+
+.large-padded {
+  padding: 25px;
+}
+
+.push-down {
+  margin-bottom: 15px;
+}
