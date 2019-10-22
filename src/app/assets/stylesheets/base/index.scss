@@ -10,7 +10,7 @@ html {
 body {
   font: {
     family: $body-font-family;
-    size: nth($font-sizes, 0);
+    size: nth($font-sizes, 1);
   }
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
