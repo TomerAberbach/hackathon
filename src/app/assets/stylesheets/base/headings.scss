@@ -2,23 +2,23 @@
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $heading-font-family;
-  line-height: nth($line-heights, 0);
+  line-height: nth($line-heights, 1);
   margin: {
-    top: nth($space, 5);
-    bottom: nth($space, 3);
+    top: nth($space, 6);
+    bottom: nth($space, 4);
   }
 }
 
 @for $i from 1 through 6 {
   h#{$i} {
-    font-size: nth($font-sizes, 5 - ($i - 1));
-
-    @include media(0) {
-      font-size: nth($font-sizes, 6 - ($i - 1));
-    }
+    font-size: nth($font-sizes, 6 - ($i - 1));
 
     @include media(1) {
       font-size: nth($font-sizes, 7 - ($i - 1));
+    }
+
+    @include media(2) {
+      font-size: nth($font-sizes, 8 - ($i - 1));
     }
   }
 }

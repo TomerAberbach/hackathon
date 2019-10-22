@@ -9,7 +9,7 @@ $line-heights: 1.15, 1.25, 1.4, 1.625, 1.9;
 // Space
 $breakpoints: 400px, 640px, 896px, 1024px;
 @mixin media($i) {
-  @media (min-width: nth($breakpoints)) {
+  @media (min-width: nth($breakpoints, $i)) {
     @content;
   }
 }
