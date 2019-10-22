@@ -15,5 +15,4 @@ Rails.application.routes.draw do
   end
 
   devise_for :hackers, path: 'hackers'
-  root to: redirect('/dashboard')
 end
