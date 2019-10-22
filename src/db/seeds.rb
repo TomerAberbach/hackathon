@@ -7,5 +7,5 @@ if Rails.env.development?
     email: 'acm@tcnj.edu',
     capacity: 200
   )
-  User.invite!(email: ENV['EMAIL'])
 end
+User.invite!(email: ENV['EMAIL'])
