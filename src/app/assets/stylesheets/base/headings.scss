@@ -6,7 +6,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: {
     top: nth($space, 5);
     bottom: nth($space, 3);
-  };
+  }
 }
 
 @for $i from 1 through 6 {
