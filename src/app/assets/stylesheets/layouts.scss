@@ -11,7 +11,7 @@
   }
 
   &--viewport {
-    height: calc(100vh - 50px);
+    height: 100vh;
   }
 }
 
@@ -26,30 +26,6 @@
   }
 
   &--viewport {
-    height: calc(100vh - 50px);
+    height: 100vh;
   }
-}
-
-.min-padded {
-  padding: 5px;
-}
-
-.small-padded {
-  padding: 10px;
-}
-
-.moderate-padded {
-  padding: 15px;
-}
-
-.big-padded {
-  padding: 20px;
-}
-
-.large-padded {
-  padding: 25px;
-}
-
-.push-down {
-  margin-bottom: 15px;
 }
