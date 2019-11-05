@@ -1,5 +1,6 @@
 # Maps URLs to controller actions
 Rails.application.routes.draw do
+  root to: redirect('/dashboard')
   # Dashboard devise routes
   scope :dashboard do
     devise_for :users, path: 'users'
