@@ -1,0 +1,43 @@
+<% content_for(:title, 'Metadata') %>
+
+<h1>Metadata</h1>
+<dl>
+  <dt>Name</dt>
+  <dd><%= @metadata.name %></dd>
+
+  <dt>Description</dt>
+  <dd><%= @metadata.description %></dd>
+
+  <dt>Tags</dt>
+  <dd><%= @metadata.tags.join(', ') %></dd>
+
+  <dt>Host</dt>
+  <dd><%= @metadata.host %></dd>
+
+  <dt>Email</dt>
+  <dd><%= @metadata.email %></dd>
+
+  <dt>Capacity</dt>
+  <dd><%= @metadata.capacity %></dd>
+
+  <dt>Date</dt>
+  <dd><%= @metadata.date || 'None' %></dd>
+
+  <dt>Time</dt>
+  <dd><%= @metadata.time || 'None' %></dd>
+
+  <dt>Address One</dt>
+  <dd><%= @metadata.address_one || 'None' %></dd>
+
+  <dt>Address Two</dt>
+  <dd><%= @metadata.address_two || 'None' %></dd>
+
+  <dt>City</dt>
+  <dd><%= @metadata.city || 'None' %></dd>
+
+  <dt>State</dt>
+  <dd><%= @metadata.state || 'None' %></dd>
+
+  <dt>Zip Code</dt>
+  <dd><%= @metadata.zip_code || 'None' %></dd>
+</dl>
