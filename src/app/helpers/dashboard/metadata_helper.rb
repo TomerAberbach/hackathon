@@ -1,0 +1,2 @@
+module Dashboard::MetadataHelper
+end
