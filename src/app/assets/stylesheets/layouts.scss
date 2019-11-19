@@ -11,7 +11,8 @@
   }
 
   &--viewport {
-    height: 100vh;
+    flex: 1;
+    height: 100%;
   }
 }
 
@@ -26,6 +27,7 @@
   }
 
   &--viewport {
-    height: 100vh;
+    flex: 1;
+    height: 100%;
   }
 }

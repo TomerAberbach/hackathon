@@ -1,4 +1,4 @@
-@import "../variables";
+@import "variables";
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $heading-font-family;
@@ -7,6 +7,14 @@ h1, h2, h3, h4, h5, h6 {
     top: nth($space, 6);
     bottom: nth($space, 4);
   }
+}
+
+h1, h2, h3 {
+  font-weight: normal;
+}
+
+h4, h5, h6 {
+  font-weight: bold;
 }
 
 @for $i from 1 through 6 {

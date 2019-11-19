@@ -1,10 +1,14 @@
-<h2>Change your password</h2>
+<% content_for(:title, 'Change Your Password') %>
+
+<header class="vbox vbox--centering">
+  <h2>Change your password</h2>
+</header>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
+  <div>
     <%= f.label :password, "New password" %><br />
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em><br />
@@ -12,14 +16,16 @@
     <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
+  <div>
     <%= f.label :password_confirmation, "Confirm new password" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="actions">
+  <div class="hbox hbox--centering">
     <%= f.submit "Change my password" %>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<div class="vbox vbox--centering">
+  <%= render "users/shared/links" %>
+</div>

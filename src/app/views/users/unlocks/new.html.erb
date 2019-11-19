@@ -1,16 +1,22 @@
-<h2>Resend unlock instructions</h2>
+<% content_for(:title, 'Resend Unlock Instruction') %>
+
+<header class="vbox vbox--centering">
+  <h2>Resend unlock instructions</h2>
+</header>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div>
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="actions">
+  <div class="hbox hbox--centering">
     <%= f.submit "Resend unlock instructions" %>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<div class="vbox vbox--centering">
+  <%= render "users/shared/links" %>
+</div>
