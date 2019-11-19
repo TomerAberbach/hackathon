@@ -1,0 +1,103 @@
+@import "variables";
+
+input[type="text"], input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: nth($space, 2);
+  border: nth($border-widths, 2) solid $text-color;
+}
+
+form {
+  > * {
+    margin-bottom: nth($space, 5);
+  }
+}
+
+input[type="submit"] {
+  display: inline-block;
+
+  background-color: $background-color;
+  color: $text-color;
+  text-align: center;
+
+  font-family: $body-font-family;
+
+  padding: nth($space, 4);
+  border: nth($border-widths, 2) solid $text-color;
+  border-radius: 0.15em;
+
+  cursor: pointer;
+  transition: {
+    property: background-color;
+    duration: 0.2s;
+    timing-function: ease-out;
+  }
+
+  &:hover {
+    background-color: $secondary-color;
+    outline: none;
+  }
+
+  &:focus, &:active {
+    outline: none;
+  }
+}
+
+.checkbox {
+  &__input {
+    position: absolute;
+    opacity: 0;
+
+    &:disabled + .checkbox__label {
+      cursor: auto;
+    }
+
+    &:disabled + .checkbox__label:before {
+      box-shadow: none;
+      background: $text-color;
+    }
+
+    &:checked + .checkbox__label:after {
+      position: absolute;
+      top: 12px;
+      left: 6px;
+
+      background: $text-color;
+      content: '';
+
+      width: 2px;
+      height: 2px;
+
+      box-shadow: 2px 0 0 $text-color,
+      4px 0 0 $text-color,
+      4px -2px 0 $text-color,
+      4px -4px 0 $text-color,
+      4px -6px 0 $text-color,
+      4px -8px 0 $text-color,
+      4px -10px 0 $text-color;
+      transform: rotate(45deg);
+    }
+  }
+
+  &__label {
+    position: relative;
+    padding: 0;
+    pointer-events: none;
+    user-select: none;
+
+    &:before {
+      pointer-events: initial;
+      cursor: pointer;
+      display: inline-block;
+      vertical-align: text-top;
+
+      background-color: $background-color;
+      content: '';
+
+      width: 22px;
+      height: 22px;
+
+      border: nth($border-widths, 2) solid $text-color;
+      margin-right: 10px;
+    }
+  }
+}

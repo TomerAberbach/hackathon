@@ -1,29 +1,32 @@
-@import "../variables";
+@import "variables";
 
 html {
   box-sizing: border-box;
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  height: 100%;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   font: {
     family: $body-font-family;
-    size: nth($font-sizes, 1);
+    size: nth($font-sizes, 2);
   }
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
 }
 
 * {
   box-sizing: inherit;
-  font-size: inherit;
+  font: {
+    family: inherit;
+    size: inherit;
+  }
   padding: 0;
   border: none;
   margin: 0;
-}
-
-a {
-  text-decoration: none;
 }

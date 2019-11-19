@@ -1,26 +1,34 @@
-<h2>Log in</h2>
+<% content_for(:title, 'Log in') %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
+<header class="vbox vbox--centering">
+  <h2>Log in</h2>
+</header>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form' }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div>
+    <%= f.label :email, 'Email:' %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
+  <div>
+    <%= f.label :password, 'Password:' %>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="checkbox">
+      <%= f.check_box :remember_me, class: 'checkbox__input' %>
+      <%= f.label :remember_me, class: 'checkbox__label' %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="hbox hbox--centering">
+    <%= f.submit "Log in", class: 'button' %>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<div class="vbox vbox--centering">
+  <%= render "users/shared/links" %>
+</div>
