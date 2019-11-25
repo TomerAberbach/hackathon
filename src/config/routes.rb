@@ -11,8 +11,9 @@ Rails.application.routes.draw do
     # Root dashboard route to sign in
     root to: redirect('/dashboard/users/sign_in')
 
-    # Sets up dashboard routes
+    # Resources
     resource :metadata, only: %i[show edit update]
+    resources :sections
   end
 
   devise_for :hackers, path: 'hackers'
