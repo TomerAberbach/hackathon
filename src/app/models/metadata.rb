@@ -5,10 +5,10 @@ class Metadata < ApplicationRecord
   # Validation
   validates_presence_of :name, :description, :tags, :host, :email, :capacity
   validates_numericality_of :capacity, greater_than: 0
-  validate on: :create do |metadata_info|
+  validate on: :create do |metadata|
     # Validates that there is only one metadata info instance in the database at any given time
     if Metadata.exists?
-      metadata_info.errors[:base] << 'there must only be one metadata instance for the website'
+      metadata.errors[:base] << 'there must only be one metadata instance for the website'
     end
   end
 
