@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+##
+# Adds the +metadata+ table to the database.
 class CreateMetadata < ActiveRecord::Migration[6.0]
   def change
     create_table :metadata do |t|
