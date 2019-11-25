@@ -18,3 +18,4 @@ require("channels")
 
 require("trix")
 require("@rails/actiontext")
+require("../css/application.css")
