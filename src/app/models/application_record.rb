@@ -1,3 +1,6 @@
+##
+# An abstract class representing an entity in the database.
+# Instances of this class represent rows in a table on the database.
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
