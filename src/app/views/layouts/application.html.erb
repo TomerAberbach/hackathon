@@ -22,6 +22,9 @@
     <meta property="og:description" content="<%= @metadata.description %>"/>
     <meta name="twitter:description" content="<%= @metadata.description %>"/>
 
+    <%= stylesheet_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
