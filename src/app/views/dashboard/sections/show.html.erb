@@ -1,0 +1,12 @@
+<% content_for(:title, 'Section') %>
+
+<h1>Section</h1>
+
+<p><b>Title:</b><br><%= @section.title %></p>
+<p><b>Content:</b><br><%= @section.content %></p>
+
+<div>
+  <%= link_to 'Back', dashboard_sections_path %>
+  <%= link_to 'Edit', edit_dashboard_section_path(@section) %>
+  <%= link_to 'Delete', dashboard_section_path(@section), method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
