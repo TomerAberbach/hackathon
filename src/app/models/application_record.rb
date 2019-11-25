@@ -39,4 +39,20 @@ class ApplicationRecord < ActiveRecord::Base
       end
     end
   end
+
+  ##
+  # Adds validation which checks that the given +attributes+ are proper images.
+  def self.validates_imageness_of(*attributes)
+    validates(
+      *attributes,
+      allow_nil: true,
+      content_type: {
+        in: %w[image/png image/jpg image/jpeg],
+        message: 'must be a png or jpg'
+      },
+      size: {
+        less_than: 10.megabytes,
+        message: 'must be less than 10 MB'
+      })
+  end
 end
