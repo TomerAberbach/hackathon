@@ -24,6 +24,9 @@ gem 'webpacker', '~> 4.0'
 # Use tailwind for styling
 gem 'tailwindcss', '~> 1.0.0'
 
+# Use font awesome for icons
+gem "font-awesome-rails"
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 
