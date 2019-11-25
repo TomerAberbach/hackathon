@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   ##
   # Returns a boolean indicating if this is a controller for a dashboard route.
   def dashboard_controller?
-    self.class.parent == Dashboard
+    self.class.module_parent == Dashboard
   end
 
   ##
