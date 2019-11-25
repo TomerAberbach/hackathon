@@ -31,7 +31,7 @@
       <main class="vbox vbox--centering vbox--viewport">
         <%= yield %>
       </main>
-    <% elsif controller.class.parent == Dashboard %>
+    <% elsif controller.class.module_parent == Dashboard %>
       <%= render 'layouts/dashboard' %>
     <% else %>
       <%= yield %>
