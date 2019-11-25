@@ -1,0 +1,19 @@
+<% content_for(:title, 'Sections') %>
+
+<h1>Sections</h1>
+
+<ul>
+  <% @sections.each do |section| %>
+    <li>
+      <%= section.title %>
+      <%= link_to 'Show', dashboard_section_path(section) %>,
+      <%= link_to 'Edit', edit_dashboard_section_path(section) %>, or
+      <%= link_to 'Delete', dashboard_section_path(section), method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<div>
+  <%= link_to 'Create a new section', new_dashboard_section_path %>
+</div>
