@@ -1,18 +1,21 @@
-<%= form_with(model: [:dashboard, @section], local: true) do |f| %>
+<%= form_with(model: [:dashboard, @section], local: true, class: 'mt-2') do |f| %>
   <%= render partial: 'dashboard/errors', locals: { model: @section } %>
 
-  <div>
-    <%= f.label :title, 'Title:' %>
-    <%= f.text_field :title %>
+  <div class="flex flex-col mb-4">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
   </div>
 
-  <div>
-    <%= f.label :content, 'Content:' %>
-    <%= f.rich_text_area :content %>
+  <div class="flex flex-col mb-4">
+    <%= f.label :content %>
+    <%= f.rich_text_area :content, class: 'trix-content bg-white w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
   </div>
 
-  <div>
-      <%= link_to 'Cancel', dashboard_sections_path %>
-      <%= f.submit 'Save' %>
+  <div class="flex flex-col items-center">
+    <%= f.submit 'Save', class: 'bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-bold px-4 py-2 rounded' %>
+  </div>
+
+  <div class="flex flex-row justify-center text-gray-700 text-center mt-2">
+    <%= link_to 'Cancel', dashboard_sections_path, class: 'underline' %>
   </div>
 <% end %>
