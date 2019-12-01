@@ -1,0 +1,9 @@
+<%= form_with(model: [:dashboard, @admin], local: true) do |f| %>
+  <%= render partial: 'dashboard/errors', locals: { model: @admin } %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, autofocus: true, autocomplete: 'email' %>
+
+  <%= link_to 'Cancel', dashboard_admins_path %>
+  <%= f.submit 'Invite' %>
+<% end %>

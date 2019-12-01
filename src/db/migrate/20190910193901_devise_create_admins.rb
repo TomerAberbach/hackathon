@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 ##
-# Adds the +users+ table to the database.
-class DeviseCreateUsers < ActiveRecord::Migration[6.0]
+# Adds the +admins+ table to the database.
+class DeviseCreateAdmins < ActiveRecord::Migration[6.0]
   def change
-    create_table :users do |t|
+    create_table :admins do |t|
       t.timestamps null: false
 
       ## Devise
@@ -30,8 +30,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
     end
 
     # Devise
-    add_index :users, :email, unique: true
-    add_index :users, :reset_password_token, unique: true
-    add_index :users, :invitation_token, unique: true
+    add_index :admins, :email, unique: true
+    add_index :admins, :reset_password_token, unique: true
+    add_index :admins, :invitation_token, unique: true
   end
 end

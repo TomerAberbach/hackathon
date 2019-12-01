@@ -1,0 +1,12 @@
+<% content_for(:title, 'Admins') %>
+
+<ul>
+<% @admins.each do |item|%>
+  <li><%= item.email %>
+    <%= link_to 'Delete', dashboard_admin_path(item), method: :delete,
+                                              data: { confirm: 'Are you sure?' } %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to 'Invite a new admin', new_dashboard_admin_path %>

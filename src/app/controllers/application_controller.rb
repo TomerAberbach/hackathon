@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :sanitize_devise_params, if: :devise_controller?
 
   # Ensures the user is authenticated if the current route is internal
-  before_action :authenticate_user!, if: :dashboard_controller?
+  before_action :authenticate_admin!, if: :dashboard_controller?
 
   # Initializes the +@metadata+ field
   before_action :initialize_metadata
