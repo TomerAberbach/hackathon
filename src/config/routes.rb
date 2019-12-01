@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # Dashboard routes
   namespace :dashboard do
     # Root dashboard route to sign in
-    root to: redirect('/dashboard/admins/sign_in')
+    root to: redirect('/dashboard/admin/sign_in')
 
     # Resources
     resource :metadata, only: %i[show edit update]
