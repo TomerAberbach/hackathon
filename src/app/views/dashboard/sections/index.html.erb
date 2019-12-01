@@ -1,19 +1,31 @@
 <% content_for(:title, 'Sections') %>
 
-<h1>Sections</h1>
+<h1 class="text-3xl">Sections</h1>
 
-<ul>
-  <% @sections.each do |section| %>
-    <li>
-      <%= section.title %>
-      <%= link_to 'Show', dashboard_section_path(section) %>,
-      <%= link_to 'Edit', edit_dashboard_section_path(section) %>, or
-      <%= link_to 'Delete', dashboard_section_path(section), method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
-    </li>
-  <% end %>
-</ul>
+<% if @sections.any? %>
+  <table class="bg-white w-full text-left table-auto border-collapse rounded shadow-md my-6">
+    <thead>
+      <tr class="font-bold uppercase text-sm text-grey-dark ">
+        <th class="py-4 px-6 bg-grey-lightest border-b border-grey-light">Title</th>
+        <th class="py-4 px-6 bg-grey-lightest border-b border-grey-light">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sections.each do |section| %>
+        <tr class="hover:bg-grey-lighter">
+          <td class="py-4 px-6 border-b border-grey-light"><%= section.title %></td>
+          <td class="py-4 px-6 border-b border-grey-light">
+            <%= link_to 'Show', dashboard_section_path(section), class: 'underline' %>,
+            <%= link_to 'Edit', edit_dashboard_section_path(section), class: 'underline' %>, or
+            <%= link_to 'Delete', dashboard_section_path(section), method: :delete,
+                        data: { confirm: 'Are you sure?' }, class: 'underline' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="mt-2">You have not yet created any sections for the website.</p>
+<% end %>
 
-<div>
-  <%= link_to 'Create a new section', new_dashboard_section_path %>
-</div>
+<%= link_to 'Create a new section', new_dashboard_section_path, class: 'block underline mt-2' %>
