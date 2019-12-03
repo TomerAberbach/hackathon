@@ -1,5 +1,5 @@
 ##
-# An class representing a controller which handles internal HTTP requests
+# A class representing a controller which handles internal HTTP requests
 # relating to the +Section+ class.
 class Dashboard::SectionsController < ApplicationController
   # Events

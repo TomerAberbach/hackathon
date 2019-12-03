@@ -1,5 +1,5 @@
 ##
-# An class representing a controller which handles internal HTTP requests
+# A class representing a controller which handles internal HTTP requests
 # relating to the +Metadata+ class. Note that +@metadata+ is initialized
 # before each action in +ApplicationController+.
 class Dashboard::MetadataController < ApplicationController
