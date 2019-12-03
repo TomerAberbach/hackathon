@@ -8,4 +8,4 @@ if Rails.env.development?
     capacity: 200
   )
 end
-User.invite!(email: ENV['ADMIN_EMAIL'])
+Admin.invite!(email: ENV['ADMIN_EMAIL'])
