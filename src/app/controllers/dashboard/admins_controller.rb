@@ -1,20 +1,31 @@
+##
+# A class representing a controller which handles internal HTTP requests
+# relating to the +Admin+ class.
 class Dashboard::AdminsController < ApplicationController
-
+  # Events
   before_action :initialize_admin, only: %i[destroy]
 
+  ##
+  # GET /dashboard/admins
   def index
     @admins = Admin.all
   end
 
+  ##
+  # POST /dashboard/admins
   def create
     Admin.invite!(email: permitted_params[:email])
     redirect_to dashboard_admins_path, notice: 'The admin was successfully invited.'
   end
 
+  ##
+  # GET /dashboard/admins/new
   def new
     @admin = Admin.new
   end
 
+  ##
+  # GET /dashboard/admins/:id
   def destroy
     @admin.destroy
     redirect_to dashboard_admins_path, notice: 'The admin was successfully deleted.'
@@ -23,7 +34,7 @@ class Dashboard::AdminsController < ApplicationController
   private
 
   ##
-  # Initializes the +section+ field from the query +params+.
+  # Initializes the +admin+ field from the query +params+.
   def initialize_admin
     @admin = Admin.find(params[:id])
   end
