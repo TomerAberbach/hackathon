@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: redirect('/dashboard')
   # Dashboard devise routes
   scope :dashboard do
-    devise_for :admins, path: 'admin', skip: [:registrations, :invitations]
+    devise_for :admins, path: 'admin', skip: %i[registrations invitations]
     as :admin do
       get 'admin/edit', to: 'devise/registrations#edit', as: 'edit_admin_registration'
       put 'admin', to: 'devise/registrations#update', as: 'admin_registration'
