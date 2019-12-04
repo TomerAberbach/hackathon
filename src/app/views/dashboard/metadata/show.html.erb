@@ -1,43 +1,65 @@
 <% content_for(:title, 'Metadata') %>
 
-<h1>Metadata</h1>
-<dl>
-  <dt>Name</dt>
-  <dd><%= @metadata.name %></dd>
+<h1 class="text-3xl">Metadata</h1>
 
-  <dt>Description</dt>
-  <dd><%= @metadata.description %></dd>
+<div class="flex flex-col my-6">
+  <dl>
+    <dt class="font-semibold">Name</dt>
+    <dd class="mb-4"><%= @metadata.name %></dd>
 
-  <dt>Tags</dt>
-  <dd><%= @metadata.tags.join(', ') %></dd>
+    <dt class="font-semibold">Description</dt>
+    <dd class="mb-4"><%= @metadata.description %></dd>
 
-  <dt>Host</dt>
-  <dd><%= @metadata.host %></dd>
+    <dt class="font-semibold">Tags</dt>
+    <dd class="mb-4"><%= @metadata.tags.join(', ') %></dd>
 
-  <dt>Email</dt>
-  <dd><%= @metadata.email %></dd>
+    <dt class="font-semibold">Logo</dt>
+    <dd class="mb-4">
+      <% if @metadata.logo.attached? %>
+        <%= image_tag url_for(@metadata.logo) %>
+      <% else %>
+        None
+      <% end %>
+    </dd>
 
-  <dt>Capacity</dt>
-  <dd><%= @metadata.capacity %></dd>
+    <dt class="font-semibold">Host</dt>
+    <dd class="mb-4"><%= @metadata.host %></dd>
 
-  <dt>Date</dt>
-  <dd><%= @metadata.date || 'None' %></dd>
+    <dt class="font-semibold">Email</dt>
+    <dd class="mb-4"><%= @metadata.email %></dd>
 
-  <dt>Time</dt>
-  <dd><%= @metadata.time || 'None' %></dd>
+    <dt class="font-semibold">Capacity</dt>
+    <dd class="mb-4"><%= @metadata.capacity %></dd>
 
-  <dt>Address One</dt>
-  <dd><%= @metadata.address_one || 'None' %></dd>
+    <dt class="font-semibold">Start Date</dt>
+    <dd class="mb-4"><%= @metadata.start_date || 'None' %></dd>
 
-  <dt>Address Two</dt>
-  <dd><%= @metadata.address_two || 'None' %></dd>
+    <dt class="font-semibold">Start Time</dt>
+    <dd class="mb-4"><%= @metadata.start_time || 'None' %></dd>
 
-  <dt>City</dt>
-  <dd><%= @metadata.city || 'None' %></dd>
+    <dt class="font-semibold">End Date</dt>
+    <dd class="mb-4"><%= @metadata.end_date || 'None' %></dd>
 
-  <dt>State</dt>
-  <dd><%= @metadata.state || 'None' %></dd>
+    <dt class="font-semibold">End Time</dt>
+    <dd class="mb-4"><%= @metadata.end_time || 'None' %></dd>
 
-  <dt>Zip Code</dt>
-  <dd><%= @metadata.zip_code || 'None' %></dd>
-</dl>
+    <dt class="font-semibold">Address One</dt>
+    <dd class="mb-4"><%= @metadata.address_one.blank? ? 'None' : @metadata.address_one %></dd>
+
+    <dt class="font-semibold">Address Two</dt>
+    <dd class="mb-4"><%= @metadata.address_two.blank? ? 'None' : @metadata.address_two %></dd>
+
+    <dt class="font-semibold">City</dt>
+    <dd class="mb-4"><%= @metadata.city.blank? ? 'None' : @metadata.city %></dd>
+
+    <dt class="font-semibold">State</dt>
+    <dd class="mb-4"><%= @metadata.state.blank? ? 'None' : @metadata.state %></dd>
+
+    <dt class="font-semibold">Zip Code</dt>
+    <dd><%= @metadata.zip_code.blank? ? 'None' : @metadata.zip_code %></dd>
+  </dl>
+</div>
+
+<div class="flex flex-row text-gray-700">
+  <%= link_to 'Edit', edit_dashboard_metadata_path, class: 'underline mr-2' %>
+</div>

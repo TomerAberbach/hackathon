@@ -27,7 +27,8 @@ class Dashboard::MetadataController < ApplicationController
   # Returns the query +params+ filtered for permissible parameters.
   def permitted_params
     p = params.require(:metadata).permit(
-      :name, :description, :tags, :host, :email, :capacity, :date, :time,
+      :name, :description, :tags, :logo, :host, :email,
+      :capacity, :start_date, :start_time, :end_date, :end_time,
       :address_one, :address_two, :city, :state, :zip_code
     )
     p[:tags] = p[:tags].split(',')
