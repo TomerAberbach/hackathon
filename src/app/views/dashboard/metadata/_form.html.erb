@@ -1,18 +1,91 @@
-<%= form_with(model: [:dashboard, @section], local: true) do |f| %>
-  <%= render partial: 'dashboard/errors', locals: { model: @section } %>
+<%= form_with(model: [:dashboard, @metadata], local: true) do |f| %>
+  <%= render partial: 'dashboard/errors', locals: { model: @metadata } %>
 
-  <div>
-    <%= f.label :title, 'Title:' %>
-    <%= f.text_field :title %>
+  <div class="flex flex-col mb-4">
+    <%= f.label :name, class: 'required' %>
+    <%= f.text_field :name, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
   </div>
 
-  <div>
-    <%= f.label :content, 'Content:' %>
-    <%= f.rich_text_area :content %>
+  <div class="flex flex-col mb-4">
+    <%= f.label :description, class: 'required' %>
+    <%= f.text_area :description, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
   </div>
 
-  <div>
-      <%= link_to 'Cancel', dashboard_sections_path %>
-      <%= f.submit 'Save' %>
+  <div class="flex flex-col mb-4">
+    <%= f.label :tags, class: 'required' %>
+    <%= f.text_field :tags, value: @metadata.tags.join(', '), placeholder: 'A comma-separated list of tags', class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  </div>
+
+  <div class="flex flex-col mb-4">
+    <%= f.label :logo %>
+    <%= f.file_field :logo %>
+  </div>
+
+  <div class="flex flex-col mb-4">
+    <%= f.label :host, class: 'required' %>
+    <%= f.text_field :host, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  </div>
+
+  <div class="flex flex-col mb-4">
+    <%= f.label :email, class: 'required' %>
+    <%= f.email_field :email, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  </div>
+
+  <div class="flex flex-col mb-4">
+    <%= f.label :capacity, class: 'required' %>
+    <%= f.number_field :capacity, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  </div>
+
+  <div class="flex flex-col mb-4">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  </div>
+
+  <div class="flex flex-col mb-4">
+    <%= f.label :start_time %>
+    <%= f.time_field :start_time, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  </div>
+
+  <div class="flex flex-col mb-4">
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  </div>
+
+  <div class="flex flex-col mb-4">
+    <%= f.label :end_time %>
+    <%= f.time_field :end_time, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  </div>
+
+  <div class="flex flex-col mb-4">
+    <%= f.label :address_one %>
+    <%= f.text_field :address_one, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  </div>
+
+  <div class="flex flex-col mb-4">
+    <%= f.label :address_two %>
+    <%= f.text_field :address_two, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  </div>
+
+  <div class="flex flex-col mb-4">
+    <%= f.label :city %>
+    <%= f.text_field :city, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  </div>
+
+  <div class="flex flex-col mb-4">
+    <%= f.label :state %>
+    <%= f.text_field :state, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  </div>
+
+  <div class="flex flex-col mb-4">
+    <%= f.label :zip_code %>
+    <%= f.text_field :zip_code, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  </div>
+
+  <div class="flex flex-col items-center">
+    <%= f.submit 'Save', class: 'bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-bold px-4 py-2 rounded' %>
+  </div>
+
+  <div class="flex flex-row justify-center text-gray-700 text-center mt-2">
+    <%= link_to 'Cancel', dashboard_metadata_path, class: 'underline' %>
   </div>
 <% end %>
