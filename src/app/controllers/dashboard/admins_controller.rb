@@ -25,10 +25,14 @@ class Dashboard::AdminsController < ApplicationController
   end
 
   ##
-  # GET /dashboard/admins/:id
+  # DELETE /dashboard/admins/:id
   def destroy
-    @admin.destroy
-    redirect_to dashboard_admins_path, notice: 'The admin was successfully deleted.'
+    if @admin == current_admin || @admin.super_admin?
+      redirect_to dashboard_admins_path
+    else
+      @admin.destroy
+      redirect_to dashboard_admins_path, notice: 'The admin was successfully deleted.'
+    end
   end
 
   private
