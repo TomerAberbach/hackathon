@@ -1,5 +1,5 @@
 <main class="flex flex-row flex-1 bg-gray-100">
-  <nav class="w-1/5 min-w-64 bg-white overflow-y-auto border-gray-300 border-r-2">
+  <nav class="w-1/5 min-w-64 bg-white overflow-y-auto border-gray-300 border-t-2 border-r-2">
     <header class="flex flex-col items-center mx-3 mt-6 pb-6 text-gray-700 border-gray-300 border-b-2">
       <%= fa_icon 'user-circle', class: 'fa-lg fill-current' %>
       <span class="mt-2"><%= current_admin.email %></span>
@@ -18,7 +18,7 @@
       <% end %>
     </ul>
   </nav>
-  <section class="w-4/5 p-12">
+  <section class="w-4/5 p-12 border-t-2">
     <%= yield %>
   </section>
 </main>
