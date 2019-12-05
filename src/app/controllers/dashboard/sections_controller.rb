@@ -3,12 +3,12 @@
 # relating to the +Section+ class.
 class Dashboard::SectionsController < ApplicationController
   # Events
-  before_action :initialize_section, only: %i[edit show update destroy]
+  before_action :initialize_section, only: %i[edit show update up down destroy]
 
   ##
   # GET /dashboard/sections
   def index
-    @sections = Section.all
+    @sections = Section.order(id: :asc)
   end
 
   ##
@@ -38,13 +38,33 @@ class Dashboard::SectionsController < ApplicationController
   def show; end
 
   ##
-  # GET /dashboard/sections/:id
+  # PATCH/PUT /dashboard/sections/:id
   def update
     if @section.update(permitted_params)
       redirect_to dashboard_section_path(@section), notice: 'The section was successfully updated.'
     else
       render :edit
     end
+  end
+
+  ##
+  # PATCH /dashboard/sections/:id/up
+  def up
+    if @section != Section.order(id: :asc).first
+      Section.swap(@section, @section.previous)
+    end
+
+    redirect_to dashboard_sections_path
+  end
+
+  ##
+  # PATCH /dashboard/sections/:id/down
+  def down
+    if @section != Section.order(id: :desc).first
+      Section.swap(@section, @section.next)
+    end
+
+    redirect_to dashboard_sections_path
   end
 
   ##

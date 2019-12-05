@@ -11,12 +11,19 @@
       </tr>
     </thead>
     <tbody>
-      <% @sections.each do |section| %>
+      <% @sections.each_with_index do |section, i| %>
         <tr class="hover:bg-grey-lighter">
           <td class="py-4 px-6 border-b border-grey-light"><%= section.title %></td>
           <td class="py-4 px-6 border-b border-grey-light">
             <%= link_to 'Show', dashboard_section_path(section), class: 'underline' %>,
-            <%= link_to 'Edit', edit_dashboard_section_path(section), class: 'underline' %>, or
+            <%= link_to 'Edit', edit_dashboard_section_path(section), class: 'underline' %>,
+            <% if i != 0 %>
+              <%= link_to 'Move Up', up_dashboard_section_path(section), method: :patch, class: 'underline' %>,
+            <% end %>
+            <% if i != @sections.count - 1 %>
+              <%= link_to 'Move Down', down_dashboard_section_path(section), method: :patch, class: 'underline' %>,
+            <% end %>
+            or
             <%= link_to 'Delete', dashboard_section_path(section), method: :delete,
                         data: { confirm: 'Are you sure?' }, class: 'underline' %>
           </td>

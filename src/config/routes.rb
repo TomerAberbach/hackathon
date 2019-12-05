@@ -20,7 +20,12 @@ Rails.application.routes.draw do
 
     # Resources
     resource :metadata, only: %i[show edit update]
-    resources :sections
+    resources :sections do
+      member do
+        patch :up
+        patch :down
+      end
+    end
     resources :admins
   end
 
