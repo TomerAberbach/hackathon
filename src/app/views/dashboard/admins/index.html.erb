@@ -1,12 +1,31 @@
 <% content_for(:title, 'Admins') %>
 
-<ul>
-<% @admins.each do |item|%>
-  <li><%= item.email %>
-    <%= link_to 'Delete', dashboard_admin_path(item), method: :delete,
-                                              data: { confirm: 'Are you sure?' } %>
-  </li>
-<% end %>
-</ul>
+<h1 class="text-3xl">Admins</h1>
 
-<%= link_to 'Invite a new admin', new_dashboard_admin_path %>
+<table class="bg-white w-full text-left table-auto border-collapse rounded shadow-md my-6">
+  <thead>
+    <tr class="font-bold uppercase text-sm text-grey-dark ">
+      <th class="py-4 px-6 bg-grey-lightest border-b border-grey-light">Email</th>
+      <th class="py-4 px-6 bg-grey-lightest border-b border-grey-light">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @admins.each do |admin| %>
+      <tr class="hover:bg-grey-lighter">
+        <td class="py-4 px-6 border-b border-grey-light"><%= admin.email %></td>
+        <td class="py-4 px-6 border-b border-grey-light">
+          <% if admin == current_admin %>
+            None (cannot delete self)
+          <% elsif admin.super_admin? %>
+            None (cannot delete super admin)
+          <% else %>
+            <%= link_to 'Delete', dashboard_admin_path(admin), method: :delete,
+                        data: { confirm: 'Are you sure?' }, class: 'underline' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Invite a new admin', new_dashboard_admin_path, class: 'block underline mt-2' %>

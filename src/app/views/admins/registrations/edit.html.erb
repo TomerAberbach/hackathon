@@ -4,7 +4,7 @@
 
 <div class="bg-white p-10 rounded shadow">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render 'devise/shared/error_messages', resource: resource %>
+    <%= render 'admins/shared/error_messages', resource: resource %>
 
     <div class="flex flex-col mb-4">
       <%= f.label :email %>
