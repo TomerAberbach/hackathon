@@ -1,9 +1,7 @@
 <% if resource.errors.any? %>
-  <div class="flex flex-col mb-4">
-    <h2>
-      <%= I18n.t('errors.messages.not_saved', count: resource.errors.count, resource: resource.class.model_name.human.downcase) %>
-    </h2>
-    <ul class="text-red-600">
+  <div class="flex flex-col text-red-700 mb-4">
+    <%= pluralize(resource.errors.count, 'error') %> <%= resource.errors.count == 1 ? 'was' : 'were' %> encountered while trying to save:
+    <ul class="list-disc pl-4">
       <% resource.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
