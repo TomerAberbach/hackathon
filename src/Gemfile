@@ -37,6 +37,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'devise_invitable', '~> 2.0.0'
 
+# Use kaminari for pagination
+gem 'kaminari'
+
 # Use active storage validations for database file storage validation
 gem 'active_storage_validations'
 gem 'image_processing', '~> 1.2'
