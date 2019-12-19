@@ -16,7 +16,7 @@
   },
   "addons": [
     "sendgrid",
-    "bucketeer"
+    "cloudinary"
   ],
   "buildpacks": [
     {
