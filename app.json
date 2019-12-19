@@ -10,7 +10,7 @@
       "value": "YOUR DOMAIN NAME"
     },
     "ADMIN_EMAIL": {
-      "description": "An email address to send an admin account invite to. The recipient will become the super admin of the website."
+      "description": "An email address to send an admin account invite to. The recipient will become the super admin of the website.",
       "value": "YOUR EMAIL ADDRESS"
     }
   },
