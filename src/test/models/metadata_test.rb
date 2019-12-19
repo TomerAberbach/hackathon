@@ -6,8 +6,7 @@ class MetadataTest < ActiveSupport::TestCase
       Metadata.create!(
         name: 'HackTCNJ',
         description: 'An awesome hackathon!',
-        tags: %w[hack tcnj awesome code],
-        host: 'TCNJ',
+        keywords: %w[hack tcnj awesome code],
         email: 'acm@tcnj.edu',
         capacity: 200
       )
@@ -23,7 +22,7 @@ class MetadataTest < ActiveSupport::TestCase
     metadata.description = 'An  awesome    hackathon!'
     assert_equal('An awesome hackathon!', metadata.description)
 
-    metadata.tags = ['hack   ', '  tcnj ', 'awesome', 'code']
-    assert_equal(%w[hack tcnj awesome code], metadata.tags)
+    metadata.keywords = ['hack   ', '  tcnj ', 'awesome', 'code']
+    assert_equal(%w[hack tcnj awesome code], metadata.keywords)
   end
 end

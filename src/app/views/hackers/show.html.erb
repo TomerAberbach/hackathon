@@ -1,0 +1,52 @@
+<% content_for(:title, current_hacker.waitlisted ? 'You\'ve Been Waitlisted' : 'You\'re Registered!') %>
+
+<% if current_hacker.waitlisted %>
+  <p>Sorry, looks like we're at maximum capacity, so you've been placed on the waitlist.</p>
+  <p>We'll let you know if space opens up!</p>
+<% end %>
+
+<dl>
+  <dt>Email</dt>
+  <dd class="mb-4"><%= current_hacker.email %></dd>
+
+  <dt>First Name</dt>
+  <dd class="mb-4"><%= current_hacker.first_name %></dd>
+
+  <dt>Last Name</dt>
+  <dd class="mb-4"><%= current_hacker.last_name %></dd>
+
+  <dt>Level of Study</dt>
+  <dd class="mb-4"><%= current_hacker.level_of_study %></dd>
+
+  <dt>Major</dt>
+  <dd class="mb-4"><%= current_hacker.major %></dd>
+
+  <dt>Shirt Size</dt>
+  <dd class="mb-4"><%= current_hacker.shirt_size %></dd>
+
+  <dt>Dietary Restrictions</dt>
+  <dd class="mb-4"><%= current_hacker.dietary_restrictions %></dd>
+
+  <dt>Special Needs</dt>
+  <dd class="mb-4"><%= current_hacker.special_needs.blank? ? 'None' : current_hacker.special_needs %></dd>
+
+  <dt>Date of Birth</dt>
+  <dd class="mb-4"><%= current_hacker.date_of_birth %></dd>
+
+  <dt>Gender</dt>
+  <dd class="mb-4"><%= current_hacker.gender %></dd>
+
+  <dt>Phone Number</dt>
+  <dd class="mb-4"><%= current_hacker.phone_number %></dd>
+
+  <dt>School</dt>
+  <dd class="mb-4"><%= current_hacker.school %></dd>
+
+  <dt>Resume</dt>
+  <dd class="mb-4"><%= link_to 'Download', rails_blob_path(current_hacker.resume, disposition: 'attachment'), class: 'underline' %></dd>
+</dl>
+
+<div class="flex flex-col text-gray-700 text-center mt-2">
+  <%= link_to 'Edit registration', edit_hacker_registration_path, class: 'underline' %>
+  <%= link_to 'Sign out', destroy_hacker_session_path, method: :delete, class: 'underline' %>
+</div>

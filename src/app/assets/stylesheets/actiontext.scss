@@ -5,10 +5,31 @@
 //
 //= require trix/dist/trix
 
-// We need to override trix.css’s image gallery styles to accommodate the
-// <action-text-attachment> element we wrap around attachments. Otherwise,
-// images in galleries will be squished by the max-width: 33%; rule.
+trix-editor.trix-content {
+  max-width: initial;
+}
+
 .trix-content {
+  width: 100%;
+  max-width: 60ch;
+
+  h1 {
+    font-weight: bold;
+    font-size: 1.3em;
+    line-height: 1.5;
+    width: 100%;
+  }
+
+  action-text-attachment, figure > img {
+    display: block;
+    max-width: 40ch;
+    margin: 0 auto;
+  }
+
+  div {
+    width: 100%;
+  }
+
   a {
     text-decoration: underline;
   }
@@ -43,6 +64,21 @@
     .attachment {
       padding: 0 !important;
       max-width: 100% !important;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  trix-toolbar .trix-button-row {
+    flex-direction: column;
+    align-items: flex-start;
+
+    > .trix-button-group {
+      margin-left: 0;
+    }
+
+    > .trix-button-group-spacer {
+      display: none;
     }
   }
 }

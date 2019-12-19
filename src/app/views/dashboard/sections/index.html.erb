@@ -3,18 +3,18 @@
 <h1 class="text-3xl">Sections</h1>
 
 <% if @sections.any? %>
-  <table class="bg-white w-full text-left table-auto border-collapse rounded shadow-md my-6">
-    <thead>
-      <tr class="font-bold uppercase text-sm text-grey-dark ">
-        <th class="py-4 px-6 bg-grey-lightest border-b border-grey-light">Title</th>
-        <th class="py-4 px-6 bg-grey-lightest border-b border-grey-light">Actions</th>
-      </tr>
-    </thead>
+  <%= render 'partials/table/table' do %>
+    <%= render 'partials/table/head' do %>
+      <%= render 'partials/table/heading', content: 'Title' %>
+      <%= render 'partials/table/heading', content: 'Published?' %>
+      <%= render 'partials/table/heading', content: 'Actions' %>
+    <% end %>
     <tbody>
       <% @sections.each_with_index do |section, i| %>
-        <tr class="hover:bg-grey-lighter">
-          <td class="py-4 px-6 border-b border-grey-light"><%= section.title %></td>
-          <td class="py-4 px-6 border-b border-grey-light">
+        <%= render 'partials/table/row' do %>
+          <%= render 'partials/table/cell', content: section.title %>
+          <%= render 'partials/table/cell', content: section.draft ? 'No' : 'Yes' %>
+          <%= render 'partials/table/cell' do %>
             <%= link_to 'Show', dashboard_section_path(section), class: 'underline' %>,
             <%= link_to 'Edit', edit_dashboard_section_path(section), class: 'underline' %>,
             <% if i != 0 %>
@@ -23,14 +23,19 @@
             <% if i != @sections.count - 1 %>
               <%= link_to 'Move Down', down_dashboard_section_path(section), method: :patch, class: 'underline' %>,
             <% end %>
+            <% if section.draft %>
+              <%= link_to 'Publish' , publish_dashboard_section_path(section), method: :patch, class: 'underline' %>,
+            <% else %>
+              <%= link_to 'Unpublish' , unpublish_dashboard_section_path(section), method: :patch, class: 'underline' %>,
+            <% end %>
             or
             <%= link_to 'Delete', dashboard_section_path(section), method: :delete,
                         data: { confirm: 'Are you sure?' }, class: 'underline' %>
-          </td>
-        </tr>
+          <% end %>
+        <% end %>
       <% end %>
     </tbody>
-  </table>
+  <% end %>
 <% else %>
   <p class="mt-2">You have not yet created any sections for the website.</p>
 <% end %>

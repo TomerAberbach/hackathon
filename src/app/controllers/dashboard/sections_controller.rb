@@ -3,12 +3,18 @@
 # relating to the +Section+ class.
 class Dashboard::SectionsController < ApplicationController
   # Events
-  before_action :initialize_section, only: %i[edit show update up down destroy]
+  before_action :initialize_section, only: %i[edit show update up down publish unpublish destroy]
 
   ##
   # GET /dashboard/sections
   def index
     @sections = Section.order(id: :asc)
+  end
+
+  ##
+  # GET /dashboard/sections/new
+  def new
+    @section = Section.new
   end
 
   ##
@@ -24,18 +30,12 @@ class Dashboard::SectionsController < ApplicationController
   end
 
   ##
-  # GET /dashboard/sections/new
-  def new
-    @section = Section.new
-  end
+  # GET /dashboard/sections/:id
+  def show; end
 
   ##
   # GET /dashboard/sections/:id/edit
   def edit; end
-
-  ##
-  # GET /dashboard/sections/:id
-  def show; end
 
   ##
   # PATCH/PUT /dashboard/sections/:id
@@ -68,6 +68,26 @@ class Dashboard::SectionsController < ApplicationController
   end
 
   ##
+  # PATCH /dashboard/sections/:id/publish
+  def publish
+    if @section.draft
+      @section.update(draft: false)
+    end
+
+    redirect_to dashboard_sections_path
+  end
+
+  ##
+  # PATCH /dashboard/sections/:id/unpublish
+  def unpublish
+    unless @section.draft
+      @section.update(draft: true)
+    end
+
+    redirect_to dashboard_sections_path
+  end
+
+  ##
   # DELETE /dashboard/sections/:id
   def destroy
     @section.destroy
@@ -85,6 +105,6 @@ class Dashboard::SectionsController < ApplicationController
   ##
   # Returns the query +params+ filtered for permissible parameters.
   def permitted_params
-    params.require(:section).permit(:title, :content)
+    params.require(:section).permit(:title, :content, :draft)
   end
 end

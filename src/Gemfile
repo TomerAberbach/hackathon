@@ -42,7 +42,9 @@ gem 'kaminari'
 
 # Use active storage validations for database file storage validation
 gem 'active_storage_validations'
+gem 'active_storage-send_zip'
 gem 'image_processing', '~> 1.2'
+gem 'aws-sdk-s3', require: false
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

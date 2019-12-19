@@ -1,0 +1,79 @@
+<% content_for(:title, 'Home') %>
+
+<main class="flex flex-col flex-1">
+  <% if @metadata.mlh %>
+    <div><%= @metadata.mlh_banner_code.html_safe %></div>
+  <% end %>
+
+  <nav class="fixed bg-white text-xl text-gray-700 w-full p-6 shadow">
+    <ul class="hidden md:flex flex-row justify-end w-full px-6">
+      <li class="font-bold mr-auto"><%= @metadata.name %></li>
+      <% @sections.each_with_index do |section, i| %>
+        <li class="<%= i == 0 ? '' : 'ml-8' %>">
+          <a href="#<%= section.title.parameterize %>"><%= section.title %></a>
+        </li>
+      <% end %>
+    </ul>
+    <ul class="flex md:hidden flex-row justify-end w-full">
+      <li class="font-bold mr-auto"><%= @metadata.name %></li>
+      <li class="cursor-pointer" onclick="const nav = document.getElementById('navigation'); nav.className = nav.className.endsWith('flex md:hidden') ? nav.className.replace('flex md:hidden', 'hidden md:hidden') : nav.className.replace('hidden md:hidden', 'flex md:hidden');">
+        <%= fa_icon 'bars', class: 'fa-lg fill-current' %>
+      </li>
+    </ul>
+    <ul id="navigation" class="flex-col items-center pt-4 hidden md:hidden">
+      <% @sections.each_with_index do |section, i| %>
+        <li class="mt-3">
+          <a href="#<%= section.title.parameterize %>"><%= section.title %></a>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+  <header class="hero w-full min-h-screen">
+    <div class="flex flex-col items-center justify-center text-center text-white min-h-screen px-4 pt-24 pb-6 md:pt-32 md:pb-12">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-none"><%= @metadata.name %></h1>
+
+      <% if @metadata.logo.attached? %>
+        <%= image_tag url_for(@metadata.logo), alt: '', class: 'w-full h-auto max-w-56 sm:max-w-64 my-4' %>
+      <% end %>
+
+      <%= datetime_range %>
+      <%= address %>
+
+      <% if @metadata.registration_open %>
+        <% if hacker_signed_in? %>
+          <%= link_to 'View your application', hacker_path, class: 'text-xl sm:text-2xl bg-blue cursor-pointer text-white font-bold px-4 py-2 border-white border-2 rounded mt-2' %>
+        <% else %>
+          <div class="flex flex-col">
+            <%= link_to 'Register', new_hacker_registration_path, class: 'text-xl sm:text-2xl bg-blue cursor-pointer text-white font-bold px-4 py-2 border-white border-2 rounded mt-2' %>
+            <span class="mt-2">or <%= link_to 'sign in', new_hacker_session_path, class: 'text-white font-bold underline' %></span>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="flex flex-col text-black bg-white p-4 rounded m-4">
+          <h2 class="text-xl sm:text-2xl">Mailing List</h2>
+          <%= form_tag(mailing_list_path, method: :patch, class: 'text-left') do %>
+            <%= render 'partials/form/field' do %>
+              <%= label_tag :email, nil, class: 'required sm:text-xl' %>
+              <%= email_field_tag :email, nil, class: "#{textbox_classes} sm:text-xl" %>
+            <% end %>
+
+            <%= render 'partials/form/centered' do %>
+              <%= submit_tag 'Submit', class: 'sm:text-xl bg-blue cursor-pointer text-white font-bold px-4 py-2 border-white border-2 rounded mt-2' %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </header>
+
+  <% @sections.each_with_index do |section, i| %>
+    <section class="flex flex-col items-center text-base sm:text-xl p-8 sm:p-16 md:p-20 <%= i % 2 == 0 ? 'bg-white text-black' : 'bg-blue text-white' %>">
+      <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+        <a id="<%= section.title.parameterize %>" class="pt-24 outline-none" href="#<%= section.title.parameterize %>">
+          <%= section.title %>
+        </a>
+      </h2>
+      <%= section.content %>
+    </section>
+  <% end %>
+</main>

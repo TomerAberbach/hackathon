@@ -1,0 +1,10 @@
+<% if errors.any? %>
+  <div class="flex flex-col text-red-700 mb-4">
+    <%= pluralize(errors.count, 'error') %> <%= errors.count == 1 ? 'was' : 'were' %> encountered while trying to save:
+    <ul class="list-disc pl-4">
+      <% (errors.respond_to?(:full_messages) ? errors.full_messages : errors).each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

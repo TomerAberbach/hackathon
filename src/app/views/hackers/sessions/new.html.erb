@@ -1,26 +1,26 @@
-<h2>Log in</h2>
+<% content_for(:title, 'Sign In') %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= render 'partials/form/errors', errors: resource.errors %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
+  <%= render 'partials/form/field' do %>
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: textbox_classes %>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+  <%= render 'partials/form/field' do %>
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: 'current-password', class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field', direction: 'row' do %>
+    <%= f.check_box :remember_me, class: 'mr-2' %>
+    <%= f.label :remember_me %>
+  <% end %>
+
+  <%= render 'partials/form/centered' do %>
+    <%= f.submit 'Sign in', class: button_classes %>
+  <% end %>
 <% end %>
 
-<%= render "hackers/shared/links" %>
+<%= render 'hackers/links' %>

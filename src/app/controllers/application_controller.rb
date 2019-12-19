@@ -37,15 +37,23 @@ class ApplicationController < ActionController::Base
 
   ##
   # Overrides the +sign_out+ redirect path method so after sign out the user
-  # is redirected to the dashboard root, rather than the front-facing website.
+  # is redirected to their website root.
   def after_sign_out_path_for(resource_or_scope)
-    dashboard_root_path
+    if resource_or_scope == :admin
+      dashboard_root_path
+    else
+      root_path
+    end
   end
 
   ##
   # Overrides the +sign_in+ redirect path method so after sign in the user
-  # is redirected to the dashboard, rather than the front-facing website.
+  # is redirected to their dashboard.
   def after_sign_in_path_for(resource)
-    stored_location_for(resource) || dashboard_metadata_path
+    if resource.class.name == 'Admin'
+      dashboard_metadata_path
+    else
+      hacker_path
+    end
   end
 end
