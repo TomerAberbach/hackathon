@@ -44,7 +44,8 @@ gem 'kaminari'
 gem 'active_storage_validations'
 gem 'active_storage-send_zip'
 gem 'image_processing', '~> 1.2'
-gem 'aws-sdk-s3', require: false
+gem 'cloudinary', require: false
+gem 'activestorage-cloudinary-service'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

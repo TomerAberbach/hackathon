@@ -28,11 +28,8 @@ Other:
 
 ### Only Production
 
-For non-ephemeral file storage on AWS:
-* `BUCKETEER_AWS_ACCESS_KEY_ID`
-* `BUCKETEER_AWS_SECRET_ACCESS_KEY`
-* `BUCKETEER_AWS_REGION`
-* `BUCKETEER_BUCKET_NAME`
+For non-ephemeral file storage on Cloudinary:
+* `CLOUDINARY_URL`
 
 ## Development
 
