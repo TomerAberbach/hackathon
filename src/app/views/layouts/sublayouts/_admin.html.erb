@@ -1,0 +1,6 @@
+<%= render 'partials/notice', notice: notice, color: 'green' %>
+<%= render 'partials/notice', notice: alert, color: 'red' %>
+
+<%= render 'partials/account/fullscreen_main', class: 'bg-gray-100' do %>
+  <%= render 'partials/account/titled_card', class: 'bg-white' %>
+<% end %>

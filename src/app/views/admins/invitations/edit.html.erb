@@ -1,27 +1,23 @@
 <% content_for(:title, 'Set Your Password') %>
 
-<h1 class="text-3xl mb-3">Set Your Password</h1>
+<%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render 'partials/form/errors', errors: resource.errors %>
 
-<div class="bg-white p-10 rounded shadow">
-  <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render 'admins/shared/error_messages', resource: resource %>
+  <%= f.hidden_field :invitation_token, readonly: true %>
 
-    <%= f.hidden_field :invitation_token, readonly: true %>
-
-    <% if f.object.class.require_password_on_accepting %>
-      <div class="flex flex-col mb-4">
-        <%= f.label :password %>
-        <%= f.password_field :password, autofocus: true, autocomplete: 'email', class: 'px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-      </div>
-
-      <div class="flex flex-col mb-4">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autofocus: true, autocomplete: 'email', class: 'px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-      </div>
+  <% if f.object.class.require_password_on_accepting %>
+    <%= render 'partials/form/field' do %>
+      <%= f.label :password, class: 'required' %>
+      <%= f.password_field :password, autofocus: true, autocomplete: 'email', class: textbox_classes %>
     <% end %>
 
-    <div class="flex flex-col items-center">
-      <%= f.submit 'Set my password', class: 'bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-bold px-4 py-2 rounded' %>
-    </div>
+    <%= render 'partials/form/field' do %>
+      <%= f.label :password_confirmation, class: 'required' %>
+      <%= f.password_field :password_confirmation, autofocus: true, autocomplete: 'email', class: textbox_classes %>
+    <% end %>
   <% end %>
-</div>
+
+  <%= render 'partials/form/centered' do %>
+    <%= f.submit 'Set my password', class: button_classes %>
+  <% end %>
+<% end %>

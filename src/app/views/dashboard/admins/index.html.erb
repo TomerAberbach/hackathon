@@ -2,18 +2,16 @@
 
 <h1 class="text-3xl">Admins</h1>
 
-<table class="bg-white w-full text-left table-auto border-collapse rounded shadow-md my-6">
-  <thead>
-    <tr class="font-bold uppercase text-sm text-grey-dark ">
-      <th class="py-4 px-6 bg-grey-lightest border-b border-grey-light">Email</th>
-      <th class="py-4 px-6 bg-grey-lightest border-b border-grey-light">Actions</th>
-    </tr>
-  </thead>
+<%= render 'partials/table/table' do %>
+  <%= render 'partials/table/head' do %>
+    <%= render 'partials/table/heading', content: 'Email' %>
+    <%= render 'partials/table/heading', content: 'Actions' %>
+  <% end %>
   <tbody>
     <% @admins.each do |admin| %>
-      <tr class="hover:bg-grey-lighter">
-        <td class="py-4 px-6 border-b border-grey-light"><%= admin.email %></td>
-        <td class="py-4 px-6 border-b border-grey-light">
+      <%= render 'partials/table/row' do %>
+        <%= render 'partials/table/cell', content: "#{admin.email}#{admin.invitation_accepted_at.nil? ? ' (has not accepted invitation)' : ''}" %>
+        <%= render 'partials/table/cell' do %>
           <% if admin == current_admin %>
             None (cannot delete self)
           <% elsif admin.super_admin? %>
@@ -22,10 +20,10 @@
             <%= link_to 'Delete', dashboard_admin_path(admin), method: :delete,
                         data: { confirm: 'Are you sure?' }, class: 'underline' %>
           <% end %>
-        </td>
-      </tr>
+        <% end %>
+      <% end %>
     <% end %>
   </tbody>
-</table>
+<% end %>
 
 <%= link_to 'Invite a new admin', new_dashboard_admin_path, class: 'block underline mt-2' %>

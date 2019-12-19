@@ -12,16 +12,16 @@ class Dashboard::AdminsController < ApplicationController
   end
 
   ##
+  # GET /dashboard/admins/new
+  def new
+    @admin = Admin.new
+  end
+
+  ##
   # POST /dashboard/admins
   def create
     Admin.invite!(email: permitted_params[:email])
     redirect_to dashboard_admins_path, notice: 'The admin was successfully invited.'
-  end
-
-  ##
-  # GET /dashboard/admins/new
-  def new
-    @admin = Admin.new
   end
 
   ##

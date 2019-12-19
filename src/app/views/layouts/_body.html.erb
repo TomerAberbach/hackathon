@@ -1,0 +1,16 @@
+<body class="flex flex-col min-h-full">
+  <% if controller.class.name == 'HackersController' %>
+    <%= render 'layouts/sublayouts/hacker' %>
+  <% else %>
+    <% case controller.class.module_parent.name
+         when 'Dashboard' %>
+      <%= render 'layouts/sublayouts/dashboard' %>
+    <% when 'Hackers' %>
+      <%= render 'layouts/sublayouts/hacker' %>
+    <% when 'Admins' %>
+      <%= render 'layouts/sublayouts/admin' %>
+    <% else %>
+      <%= yield %>
+    <% end %>
+  <% end %>
+</body>

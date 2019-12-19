@@ -1,0 +1,30 @@
+{
+  "name": "Hackathon",
+  "description": "A hackathon web application with a comprehensive administrative backend, email infrastructure, attendee registration, and optional MLH integration.",
+  "repository": "https://github.com/TomerAberbach/hackathon",
+  "keywords": ["hackathon", "rails", "ruby", "mlh"],
+  "success_url": "/dashboard",
+  "env": {
+    "DOMAIN": {
+      "description": "The domain name of the website (e.g. hacktcnj.com).",
+      "value": "YOUR DOMAIN NAME"
+    },
+    "ADMIN_EMAIL": {
+      "description": "An email address to send an admin account invite to. The recipient will become the super admin of the website."
+      "value": "YOUR EMAIL ADDRESS"
+    }
+  },
+  "addons": [
+    "sendgrid",
+    "bucketeer"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-activestorage-preview"
+    }
+  ],
+  "postdeploy": "rails db:setup"
+}

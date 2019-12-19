@@ -1,43 +1,99 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% content_for(:title, 'Edit Registration') %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= form_for(resource, as: 'hacker', url: hacker_registration_path, html: { method: :put }) do |f| %>
+  <%= render 'partials/form/errors', errors: resource.errors %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <%= render 'partials/form/field' do %>
+    <%= f.label :email, class: 'required' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: textbox_classes %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <%= render 'partials/form/field' do %>
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+    <%= f.password_field :password, autocomplete: 'new-password', class: textbox_classes %>
     <% if @minimum_password_length %>
-      <br />
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
-  </div>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <%= render 'partials/form/field' do %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: textbox_classes %>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+  <%= render 'partials/form/field' do %>
+    <%= f.label :current_password, class: 'required' %> <i>(we need your current password to confirm your changes)</i>
+    <%= f.password_field :current_password, autocomplete: 'current-password', class: textbox_classes %>
+  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+  <%= render 'partials/form/field' do %>
+    <%= f.label :first_name, class: 'required' %>
+    <%= f.text_field :first_name, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :last_name, class: 'required' %>
+    <%= f.text_field :last_name, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :level_of_study, class: 'required' %>
+    <%= f.select :level_of_study, Hacker.levels_of_study, { include_blank: true }, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :major, class: 'required' %>
+    <%= f.select :major, Hacker.majors, { include_blank: true }, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :shirt_size, class: 'required' %>
+    <%= f.select :shirt_size, Hacker.shirt_sizes, { include_blank: true }, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :dietary_restrictions, class: 'required' %>
+    <%= f.select :dietary_restrictions, Hacker.dietary_restrictions, { include_blank: true }, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :special_needs %>
+    <%= f.text_area :special_needs, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :date_of_birth, class: 'required' %>
+    <%= f.date_field :date_of_birth, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :gender, class: 'required' %>
+    <%= f.select :gender, Hacker.genders, { include_blank: true }, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :phone_number, class: 'required' %>
+    <%= f.phone_field :phone_number, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :school, class: 'required' %>
+    <%= f.text_field :school, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :resume, class: 'required' %>
+    <%= f.file_field :resume %>
+  <% end %>
+
+  <%= render 'partials/form/centered' do %>
+    <%= f.submit 'Update registration', class: button_classes %>
+  <% end %>
 <% end %>
 
-<h3>Cancel my account</h3>
+<div class="flex flex-col text-gray-700 text-center mt-2">
+  <%= link_to 'Cancel my registration', hacker_registration_path, data: { confirm: 'Are you sure?' }, method: :delete, class: 'underline' %>
+  <%= link_to 'Back', :back, class: 'underline' %>
+</div>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<%= render 'hackers/links' %>

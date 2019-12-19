@@ -1,11 +1,13 @@
 if Rails.env.development?
-  Metadata.create!(
-    name: 'HackTCNJ',
-    description: 'A swell hackathon.',
-    tags: %w[hackathon tcnj],
-    host: 'TCNJ',
-    email: 'acm@tcnj.edu',
-    capacity: 200
-  )
+  ActiveRecord::Base.transaction do
+    Metadata.create!(
+      name: 'HackTCNJ',
+      description: 'A swell hackathon.',
+      keywords: %w[hackathon tcnj],
+      email: 'acm@tcnj.edu',
+      capacity: 200
+    )
+    MailingList.create!(emails: [])
+  end
 end
 Admin.invite!(email: ENV['ADMIN_EMAIL'])

@@ -14,7 +14,14 @@ class Dashboard::MetadataController < ApplicationController
   ##
   # PATCH/PUT /dashboard/metadata
   def update
+    if @metadata.mlh != permitted_params[:mlh] and Hacker.any?
+      redirect_to dashboard_metadata_path, alert: 'MLH integration cannot be toggled after hackers have begun registering.'
+    end
+
     if @metadata.update(permitted_params)
+      # Capacity may have been changed
+      Hacker.recompute_waitlist
+
       redirect_to dashboard_metadata_path
     else
       render :edit
@@ -27,11 +34,12 @@ class Dashboard::MetadataController < ApplicationController
   # Returns the query +params+ filtered for permissible parameters.
   def permitted_params
     p = params.require(:metadata).permit(
-      :name, :description, :tags, :logo, :host, :email,
+      :name, :description, :keywords, :logo, :email,
       :capacity, :start_date, :start_time, :end_date, :end_time,
-      :address_one, :address_two, :city, :state, :zip_code
+      :address_one, :address_two, :city, :state, :zip_code, :mlh,
+      :mlh_banner_code, :registration_open
     )
-    p[:tags] = p[:tags].split(',')
+    p[:keywords] = p[:keywords].split(',')
     p
   end
 end

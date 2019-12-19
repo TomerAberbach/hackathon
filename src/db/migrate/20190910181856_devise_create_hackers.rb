@@ -14,7 +14,9 @@ class DeviseCreateHackers < ActiveRecord::Migration[6.0]
       t.string :special_needs, null: false, default: ''
       t.date :date_of_birth, null: false
       t.string :gender, null: false, default: ''
-      t.string :education, null: false, default: ''
+      t.string :phone_number, null: false, default: ''
+      t.string :school, null: false, default: ''
+      t.boolean :mlh_agreement, null: false, default: false
 
       t.boolean :checked_in, null: false, default: false
       t.boolean :waitlisted, null: false

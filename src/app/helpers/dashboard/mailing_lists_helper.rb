@@ -1,0 +1,2 @@
+module Dashboard::MailingListsHelper
+end

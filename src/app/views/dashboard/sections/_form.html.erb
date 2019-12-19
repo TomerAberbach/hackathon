@@ -1,19 +1,24 @@
 <%= form_with(model: [:dashboard, @section], local: true, class: 'mt-2') do |f| %>
-  <%= render partial: 'dashboard/errors', locals: { model: @section } %>
+  <%= render 'partials/form/errors', errors: @section.errors %>
 
-  <div class="flex flex-col mb-4">
+  <%= render 'partials/form/field' do %>
     <%= f.label :title, class: 'required' %>
-    <%= f.text_field :title, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+    <%= f.text_field :title, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
-    <%= f.label :content, class: 'required' %>
+  <%= render 'partials/form/field' do %>
+    <%= f.label :content, 'Content (use image captions to link an image to a URL)', class: 'required' %>
     <%= f.rich_text_area :content, class: 'trix-content bg-white w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+  <% end %>
 
-  <div class="flex flex-col items-center">
-    <%= f.submit 'Save', class: 'bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-bold px-4 py-2 rounded' %>
-  </div>
+  <%= render 'partials/form/field', direction: 'row' do %>
+    <%= f.check_box :draft, class: 'mr-2' %>
+    <%= f.label :draft %>
+  <% end %>
+
+  <%= render 'partials/form/centered' do %>
+    <%= f.submit 'Save', class: button_classes %>
+  <% end %>
 
   <div class="flex flex-row justify-center text-gray-700 text-center mt-2">
     <%= link_to 'Cancel', dashboard_sections_path, class: 'underline' %>

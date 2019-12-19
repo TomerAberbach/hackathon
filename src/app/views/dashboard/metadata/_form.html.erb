@@ -1,89 +1,100 @@
 <%= form_with(model: [:dashboard, @metadata], local: true, class: 'mt-2') do |f| %>
-  <%= render partial: 'dashboard/errors', locals: { model: @metadata } %>
+  <%= render 'partials/form/errors', errors: @metadata.errors %>
 
-  <div class="flex flex-col mb-4">
-    <%= f.label :name, class: 'required' %>
-    <%= f.text_field :name, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+  <%= render 'partials/form/field' do %>
+    <%= f.label :name, 'Hackathon Name', class: 'required' %>
+    <%= f.text_field :name, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
-    <%= f.label :description, class: 'required' %>
-    <%= f.text_area :description, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+  <%= render 'partials/form/field' do %>
+    <%= f.label :description, 'Hackathon Description (for SEO)', class: 'required' %>
+    <%= f.text_area :description, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
-    <%= f.label :tags, class: 'required' %>
-    <%= f.text_field :tags, value: @metadata.tags.join(', '), placeholder: 'A comma-separated list of tags', class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+  <%= render 'partials/form/field' do %>
+    <%= f.label :keywords, 'Keywords (for SEO)', class: 'required' %>
+    <%= f.text_field :keywords, value: @metadata.keywords.join(', '), placeholder: 'A comma-separated list of keywords', class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
+  <%= render 'partials/form/field' do %>
     <%= f.label :logo %>
     <%= f.file_field :logo %>
-  </div>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
-    <%= f.label :host, class: 'required' %>
-    <%= f.text_field :host, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+  <%= render 'partials/form/field' do %>
+    <%= f.label :email, 'Contact Email', class: 'required' %>
+    <%= f.email_field :email, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
-    <%= f.label :email, class: 'required' %>
-    <%= f.email_field :email, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
-
-  <div class="flex flex-col mb-4">
+  <%= render 'partials/form/field' do %>
     <%= f.label :capacity, class: 'required' %>
-    <%= f.number_field :capacity, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+    <%= f.number_field :capacity, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
+  <%= render 'partials/form/field' do %>
     <%= f.label :start_date %>
-    <%= f.date_field :start_date, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+    <%= f.date_field :start_date, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
+  <%= render 'partials/form/field' do %>
     <%= f.label :start_time %>
-    <%= f.time_field :start_time, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+    <%= f.time_field :start_time, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
+  <%= render 'partials/form/field' do %>
     <%= f.label :end_date %>
-    <%= f.date_field :end_date, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+    <%= f.date_field :end_date, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
+  <%= render 'partials/form/field' do %>
     <%= f.label :end_time %>
-    <%= f.time_field :end_time, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+    <%= f.time_field :end_time, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
+  <%= render 'partials/form/field' do %>
     <%= f.label :address_one %>
-    <%= f.text_field :address_one, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+    <%= f.text_field :address_one, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
+  <%= render 'partials/form/field' do %>
     <%= f.label :address_two %>
-    <%= f.text_field :address_two, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+    <%= f.text_field :address_two, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
+  <%= render 'partials/form/field' do %>
     <%= f.label :city %>
-    <%= f.text_field :city, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+    <%= f.text_field :city, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
+  <%= render 'partials/form/field' do %>
     <%= f.label :state %>
-    <%= f.text_field :state, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+    <%= f.text_field :state, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col mb-4">
+  <%= render 'partials/form/field' do %>
     <%= f.label :zip_code %>
-    <%= f.text_field :zip_code, class: 'w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
-  </div>
+    <%= f.text_field :zip_code, class: textbox_classes %>
+  <% end %>
 
-  <div class="flex flex-col items-center">
-    <%= f.submit 'Save', class: 'bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-bold px-4 py-2 rounded' %>
-  </div>
+  <%= render 'partials/form/field', direction: 'row' do %>
+    <%= f.check_box :mlh, class: 'mr-2' %>
+    <%= f.label :mlh, 'Integrated with MLH?' %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :mlh_banner_code, 'MLH Banner Code (changes from year to year, be very careful when entering the code)' %>
+    <%= f.text_area :mlh_banner_code, class: "#{textbox_classes} font-mono" %>
+  <% end %>
+
+  <p>DO NOT OPEN REGISTRATION UNTIL YOU'VE DETERMINED IF YOUR HACKATHON IS INTEGRATED WITH MLH.</p>
+  <%= render 'partials/form/field', direction: 'row' do %>
+    <%= f.check_box :registration_open, class: 'mr-2' %>
+    <%= f.label :registration_open, 'Registration open?' %>
+  <% end %>
+
+  <%= render 'partials/form/centered' do %>
+    <%= f.submit 'Save', class: button_classes %>
+  <% end %>
 
   <div class="flex flex-row justify-center text-gray-700 text-center mt-2">
     <%= link_to 'Cancel', dashboard_metadata_path, class: 'underline' %>

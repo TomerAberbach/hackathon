@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_025119) do
+ActiveRecord::Schema.define(version: 2019_12_19_161824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,7 +76,9 @@ ActiveRecord::Schema.define(version: 2019_11_25_025119) do
     t.string "special_needs", default: "", null: false
     t.date "date_of_birth", null: false
     t.string "gender", default: "", null: false
-    t.string "education", default: "", null: false
+    t.string "phone_number", default: "", null: false
+    t.string "school", default: "", null: false
+    t.boolean "mlh_agreement", default: false, null: false
     t.boolean "checked_in", default: false, null: false
     t.boolean "waitlisted", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -90,11 +92,16 @@ ActiveRecord::Schema.define(version: 2019_11_25_025119) do
     t.index ["reset_password_token"], name: "index_hackers_on_reset_password_token", unique: true
   end
 
+  create_table "mailing_lists", force: :cascade do |t|
+    t.text "emails"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "metadata", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
-    t.text "tags", null: false
-    t.string "host", null: false
+    t.text "keywords", null: false
     t.string "email", null: false
     t.integer "capacity", null: false
     t.date "start_date"
@@ -106,12 +113,16 @@ ActiveRecord::Schema.define(version: 2019_11_25_025119) do
     t.string "city"
     t.string "state"
     t.string "zip_code"
+    t.boolean "mlh", default: false, null: false
+    t.string "mlh_banner_code", default: "", null: false
+    t.boolean "registration_open", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "sections", force: :cascade do |t|
     t.string "title", null: false
+    t.boolean "draft", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
