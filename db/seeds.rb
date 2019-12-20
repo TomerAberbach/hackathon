@@ -7,6 +7,5 @@ ActiveRecord::Base.transaction do
     capacity: 200
   )
   MailingList.create!(emails: [])
+  Admin.invite!(email: ENV['ADMIN_EMAIL'])
 end
-
-Admin.invite!(email: ENV['ADMIN_EMAIL'])
