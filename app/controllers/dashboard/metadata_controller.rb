@@ -14,7 +14,7 @@ class Dashboard::MetadataController < ApplicationController
   ##
   # PATCH/PUT /dashboard/metadata
   def update
-    if @metadata.mlh != permitted_params[:mlh] and Hacker.any?
+    if !permitted_params[:mlh].nil? and @metadata.mlh != permitted_params[:mlh] and Hacker.any?
       redirect_to dashboard_metadata_path, alert: 'MLH integration cannot be toggled after hackers have begun registering.'
       return
     end
