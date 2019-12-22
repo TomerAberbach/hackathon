@@ -105,6 +105,8 @@ class Dashboard::SectionsController < ApplicationController
   ##
   # Returns the query +params+ filtered for permissible parameters.
   def permitted_params
-    params.require(:section).permit(:title, :content, :draft)
+    p = params.require(:section).permit(:title, :content, :draft)
+    p[:draft] = p[:draft] == '1'
+    p
   end
 end

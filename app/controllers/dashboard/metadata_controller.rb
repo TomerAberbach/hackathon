@@ -41,6 +41,8 @@ class Dashboard::MetadataController < ApplicationController
       :mlh_banner_code, :registration_open
     )
     p[:keywords] = p[:keywords].split(',') unless p[:keywords].nil?
+    p[:mlh] = p[:mlh] == '1'
+    p[:registration_open] = p[:registration_open] == '1'
     p
   end
 end
