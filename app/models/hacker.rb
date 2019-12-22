@@ -8,9 +8,10 @@ class Hacker < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable
 
   # Validation
-  validates_presence_of :first_name, :last_name, :level_of_study, :major,
+  validates_presence_of :email, :first_name, :last_name, :level_of_study, :major,
                         :shirt_size, :dietary_restrictions, :date_of_birth,
                         :gender, :phone_number, :school
+  validates_uniqueness_of :email
   validates_inclusion_of :level_of_study, in: ->(_) { Hacker.levels_of_study }
   validates_inclusion_of :major, in: ->(_) { Hacker.majors }
   validates_inclusion_of :shirt_size, in: ->(_) { Hacker.shirt_sizes }
@@ -18,7 +19,7 @@ class Hacker < ApplicationRecord
   validate do |hacker|
     # Validates that the MLH agreement is agreed to i necessary
     if ::Metadata.first.mlh and !hacker.mlh_agreement
-      metadata.errors[:base] << 'you must agree to the MLH Code of Conduct, Data Sharing, and Terms & Conditions'
+      hacker.errors[:base] << 'you must agree to the MLH Code of Conduct, Data Sharing, and Terms & Conditions'
     end
   end
 
