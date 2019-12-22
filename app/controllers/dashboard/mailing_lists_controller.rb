@@ -24,6 +24,7 @@ class Dashboard::MailingListsController < ApplicationController
   def deliver
     if @emails.none?
       redirect_to dashboard_mailing_list_path
+      return
     end
 
     @errors = []

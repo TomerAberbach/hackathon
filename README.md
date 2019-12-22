@@ -29,7 +29,6 @@ Other:
 ### Only Production
 
 * `CLOUDINARY_URL` for non-ephemeral file storage on Cloudinary.
-* `PORT`
 
 ## Development
 

@@ -43,6 +43,7 @@ class Dashboard::HackersController < ApplicationController
   def deliver
     if Hacker.none?
       redirect_to dashboard_hackers_path
+      return
     end
 
     @errors = []

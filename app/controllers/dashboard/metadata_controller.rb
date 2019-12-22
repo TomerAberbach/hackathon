@@ -16,6 +16,7 @@ class Dashboard::MetadataController < ApplicationController
   def update
     if @metadata.mlh != permitted_params[:mlh] and Hacker.any?
       redirect_to dashboard_metadata_path, alert: 'MLH integration cannot be toggled after hackers have begun registering.'
+      return
     end
 
     if @metadata.update(permitted_params)
@@ -39,7 +40,7 @@ class Dashboard::MetadataController < ApplicationController
       :address_one, :address_two, :city, :state, :zip_code, :mlh,
       :mlh_banner_code, :registration_open
     )
-    p[:keywords] = p[:keywords].split(',')
+    p[:keywords] = p[:keywords].split(',') unless p[:keywords].nil?
     p
   end
 end

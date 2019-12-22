@@ -26,5 +26,8 @@
       "url": "https://github.com/heroku/heroku-buildpack-activestorage-preview"
     }
   ],
-  "postdeploy": "rails db:migrate db:seed"
+  "postdeploy": "rails db:migrate db:seed",
+  "web": {
+    "quantity": 1
+  }
 }
