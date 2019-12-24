@@ -1,0 +1,103 @@
+<% content_for(:title, 'Register') %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render 'partials/form/errors', errors: resource.errors %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :email, class: 'required' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :password, class: 'required' %>
+    <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: 'new-password', class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :password_confirmation, class: 'required' %>
+    <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :first_name, class: 'required' %>
+    <%= f.text_field :first_name, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :last_name, class: 'required' %>
+    <%= f.text_field :last_name, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :level_of_study, class: 'required' %>
+    <%= f.select :level_of_study, Hacker.levels_of_study, { include_blank: true }, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :major, class: 'required' %>
+    <%= f.select :major, Hacker.majors, { include_blank: true }, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :shirt_size, class: 'required' %>
+    <%= f.select :shirt_size, Hacker.shirt_sizes, { include_blank: true }, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :dietary_restrictions, class: 'required' %>
+    <%= f.select :dietary_restrictions, Hacker.dietary_restrictions, { include_blank: true }, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :special_needs %>
+    <%= f.text_area :special_needs, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :date_of_birth, class: 'required' %>
+    <%= f.date_field :date_of_birth, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :gender, class: 'required' %>
+    <%= f.select :gender, Hacker.genders, { include_blank: true }, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :phone_number, class: 'required' %>
+    <%= f.phone_field :phone_number, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :school, class: 'required' %>
+    <%= f.text_field :school, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :resume, class: 'required' %>
+    <%= f.file_field :resume %>
+  <% end %>
+
+  <% if @metadata.mlh %>
+    <%= render 'partials/form/field' do %>
+      <%= f.label :mlh_agreement do %>
+        I have read and agree to the <%= link_to 'MLH Code of Conduct', 'https://static.mlh.io/docs/mlh-code-of-conduct.pdf', class: 'underline' %>.
+        I authorize you to share my application/registration information for event administration, ranking,
+        MLH administration, pre- and post-event informational e-mails, and occasional messages
+        about hackathons in-line with the <%= link_to 'MLH Privacy Policy', 'https://mlh.io/privacy', class: 'underline' %>.
+        I further agree to the terms of both the <%= link_to 'MLH Contest Terms and Conditions', 'https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions', class: 'underline' %>
+        and the <%= link_to 'MLH Privacy Policy', 'https://mlh.io/privacy', class: 'underline' %>.
+      <% end %>
+      <%= f.select :mlh_agreement, ['I agree', 'I do not agree'], { include_blank: true }, { class: textbox_classes } %>
+    <% end %>
+  <% end %>
+
+  <%= render 'partials/form/centered' do %>
+    <%= f.submit 'Register', class: button_classes %>
+  <% end %>
+<% end %>
+
+<%= render 'hackers/links' %>

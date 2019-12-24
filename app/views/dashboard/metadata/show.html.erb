@@ -1,0 +1,77 @@
+<% content_for(:title, 'Metadata') %>
+
+<h1 class="text-3xl">Metadata</h1>
+
+<div class="flex flex-col my-2">
+  <dl>
+    <dt>Hackathon Name</dt>
+    <dd class="mb-4"><%= @metadata.name %></dd>
+
+    <dt>Hackathon Description (for SEO)</dt>
+    <dd class="mb-4"><%= @metadata.description %></dd>
+
+    <dt>Keywords (for SEO)</dt>
+    <dd class="mb-4"><%= @metadata.keywords.join(', ') %></dd>
+
+    <dt>Logo</dt>
+    <dd class="mb-4">
+      <% if @metadata.logo.attached? %>
+        <%= image_tag url_for(@metadata.logo), class: 'hero w-64 max-w-full p-6' %>
+      <% else %>
+        None
+      <% end %>
+    </dd>
+
+    <dt>Contact Email</dt>
+    <dd class="mb-4"><%= @metadata.email %></dd>
+
+    <dt>Capacity</dt>
+    <dd class="mb-4"><%= @metadata.capacity %></dd>
+
+    <dt>Start Date</dt>
+    <dd class="mb-4"><%= @metadata.start_date.nil? ? 'None' : @metadata.start_date %></dd>
+
+    <dt>Start Time</dt>
+    <dd class="mb-4"><%= @metadata.start_time.nil? ? 'None' : @metadata.start_time.strftime("%-I:%M %p") %></dd>
+
+    <dt>End Date</dt>
+    <dd class="mb-4"><%= @metadata.end_date.nil? ? 'None' : @metadata.end_date %></dd>
+
+    <dt>End Time</dt>
+    <dd class="mb-4"><%= @metadata.end_time.nil? ? 'None' : @metadata.end_time.strftime("%-I:%M %p") %></dd>
+
+    <dt>Address One</dt>
+    <dd class="mb-4"><%= @metadata.address_one.blank? ? 'None' : @metadata.address_one %></dd>
+
+    <dt>Address Two</dt>
+    <dd class="mb-4"><%= @metadata.address_two.blank? ? 'None' : @metadata.address_two %></dd>
+
+    <dt>City</dt>
+    <dd class="mb-4"><%= @metadata.city.blank? ? 'None' : @metadata.city %></dd>
+
+    <dt>State</dt>
+    <dd class="mb-4"><%= @metadata.state.blank? ? 'None' : @metadata.state %></dd>
+
+    <dt>Zip Code</dt>
+    <dd class="mb-4"><%= @metadata.zip_code.blank? ? 'None' : @metadata.zip_code %></dd>
+
+    <dt>Integrated With MLH?</dt>
+    <dd class="mb-4"><%= @metadata.mlh ? 'Yes' : 'No' %></dd>
+
+    <dt>MLH Banner Code</dt>
+    <dd class="mb-4">
+      <% if @metadata.mlh_banner_code.blank? %>
+        None
+      <% else %>
+        <code><%= @metadata.mlh_banner_code %></code>
+      <% end %>
+    </dd>
+
+    <dt>Registration Open?</dt>
+    <dd class="mb-4"><%= @metadata.registration_open ? 'Yes' : 'No' %></dd>
+  </dl>
+</div>
+
+<div class="flex flex-row text-gray-700">
+  <%= link_to 'Edit', edit_dashboard_metadata_path, class: 'underline mr-2' %>
+</div>

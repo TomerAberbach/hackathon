@@ -1,0 +1,26 @@
+<% content_for(:title, 'Sign In') %>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= render 'partials/form/errors', errors: resource.errors %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: 'current-password', class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field', direction: 'row' do %>
+    <%= f.check_box :remember_me, class: 'mr-2' %>
+    <%= f.label :remember_me %>
+  <% end %>
+
+  <%= render 'partials/form/centered' do %>
+    <%= f.submit 'Sign in', class: button_classes %>
+  <% end %>
+<% end %>
+
+<%= render 'hackers/links' %>

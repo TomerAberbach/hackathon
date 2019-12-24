@@ -1,0 +1,84 @@
+//
+// Provides a drop-in pointer for the default Trix stylesheet that will format the toolbar and
+// the trix-editor content (whether displayed or under editing). Feel free to incorporate this
+// inclusion directly in any other asset bundle and remove this file.
+//
+//= require trix/dist/trix
+
+trix-editor.trix-content {
+  max-width: initial;
+}
+
+.trix-content {
+  width: 100%;
+  max-width: 60ch;
+
+  h1 {
+    font-weight: bold;
+    font-size: 1.3em;
+    line-height: 1.5;
+    width: 100%;
+  }
+
+  action-text-attachment, figure > img {
+    display: block;
+    max-width: 40ch;
+    margin: 0 auto;
+  }
+
+  div {
+    width: 100%;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  .attachment-gallery {
+    > action-text-attachment,
+    > .attachment {
+      flex: 1 0 33%;
+      padding: 0 0.5em;
+      max-width: 33%;
+    }
+
+    &.attachment-gallery--2,
+    &.attachment-gallery--4 {
+      > action-text-attachment,
+      > .attachment {
+        flex-basis: 50%;
+        max-width: 50%;
+      }
+    }
+  }
+
+  action-text-attachment {
+    .attachment {
+      padding: 0 !important;
+      max-width: 100% !important;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  trix-toolbar .trix-button-row {
+    flex-direction: column;
+    align-items: flex-start;
+
+    > .trix-button-group {
+      margin-left: 0;
+    }
+
+    > .trix-button-group-spacer {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<% content_for(:title, 'Sections') %>
+
+<h1 class="text-3xl">Sections</h1>
+
+<% if @sections.any? %>
+  <%= render 'partials/table/table' do %>
+    <%= render 'partials/table/head' do %>
+      <%= render 'partials/table/heading', content: 'Title' %>
+      <%= render 'partials/table/heading', content: 'Published?' %>
+      <%= render 'partials/table/heading', content: 'Actions' %>
+    <% end %>
+    <tbody>
+      <% @sections.each_with_index do |section, i| %>
+        <%= render 'partials/table/row' do %>
+          <%= render 'partials/table/cell', content: section.title %>
+          <%= render 'partials/table/cell', content: section.draft ? 'No' : 'Yes' %>
+          <%= render 'partials/table/cell' do %>
+            <%= link_to 'Show', dashboard_section_path(section), class: 'underline' %>,
+            <%= link_to 'Edit', edit_dashboard_section_path(section), class: 'underline' %>,
+            <% if i != 0 %>
+              <%= link_to 'Move Up', up_dashboard_section_path(section), method: :patch, class: 'underline' %>,
+            <% end %>
+            <% if i != @sections.count - 1 %>
+              <%= link_to 'Move Down', down_dashboard_section_path(section), method: :patch, class: 'underline' %>,
+            <% end %>
+            <% if section.draft %>
+              <%= link_to 'Publish' , publish_dashboard_section_path(section), method: :patch, class: 'underline' %>,
+            <% else %>
+              <%= link_to 'Unpublish' , unpublish_dashboard_section_path(section), method: :patch, class: 'underline' %>,
+            <% end %>
+            or
+            <%= link_to 'Delete', dashboard_section_path(section), method: :delete,
+                        data: { confirm: 'Are you sure?' }, class: 'underline' %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tbody>
+  <% end %>
+<% else %>
+  <p class="mt-2">You have not yet created any sections for the website.</p>
+<% end %>
+
+<%= link_to 'Create a new section', new_dashboard_section_path, class: 'block underline mt-2' %>

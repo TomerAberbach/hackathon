@@ -1,0 +1,51 @@
+<% content_for(:title, 'Hacker') %>
+
+<h1 class="text-3xl">Hacker <span class="font-bold"><%= @hacker.first_name %> <%= @hacker.last_name %></span></h1>
+
+<div class="flex flex-col my-2">
+  <dl>
+    <dt>Email</dt>
+    <dd class="mb-4"><%= @hacker.email %></dd>
+
+    <dt>Level of Study</dt>
+    <dd class="mb-4"><%= @hacker.level_of_study %></dd>
+
+    <dt>Major</dt>
+    <dd class="mb-4"><%= @hacker.major %></dd>
+
+    <dt>Shirt Size</dt>
+    <dd class="mb-4"><%= @hacker.shirt_size %></dd>
+
+    <dt>Dietary Restrictions</dt>
+    <dd class="mb-4"><%= @hacker.dietary_restrictions %></dd>
+
+    <dt>Special Needs</dt>
+    <dd class="mb-4"><%= @hacker.special_needs.blank? ? 'None' : @hacker.special_needs %></dd>
+
+    <dt>Date of Birth</dt>
+    <dd class="mb-4"><%= @hacker.date_of_birth %></dd>
+
+    <dt>Gender</dt>
+    <dd class="mb-4"><%= @hacker.gender %></dd>
+
+    <dt>Phone Number</dt>
+    <dd class="mb-4"><%= @hacker.phone_number %></dd>
+
+    <dt>School</dt>
+    <dd class="mb-4"><%= @hacker.school %></dd>
+
+    <dt>Resume</dt>
+    <dd class="mb-4"><%= link_to 'Download', rails_blob_path(@hacker.resume, disposition: 'attachment'), class: 'underline' %></dd>
+
+    <dt>Waitlisted</dt>
+    <dd class="mb-4"><%= @hacker.waitlisted ? 'Yes' : 'No' %></dd>
+
+    <dt>Checked In</dt>
+    <dd class="mb-4"><%= @hacker.checked_in ? 'Yes' : 'No' %></dd>
+  </dl>
+</div>
+
+<div class="flex flex-row text-gray-700">
+  <%= link_to 'Back', dashboard_hackers_path, class: 'underline mr-2' %>
+  <%= link_to 'Delete', dashboard_hacker_path(@hacker), method: :delete, data: { confirm: 'Are you sure?' }, class: 'underline' %>
+</div>

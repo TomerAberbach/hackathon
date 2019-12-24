@@ -1,0 +1,3 @@
+<div class="flex <%= local_assigns.fetch(:direction, 'col') == 'col' ? 'flex-col' : 'flex-row items-center' %> mb-4">
+  <%= yield %>
+</div>

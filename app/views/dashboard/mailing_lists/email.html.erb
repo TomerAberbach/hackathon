@@ -1,0 +1,25 @@
+<% content_for(:title, 'Email Hackers') %>
+
+<h1 class="text-3xl">Email Preregistration Mailing List</h1>
+
+<%= form_tag(email_dashboard_mailing_list_path) do %>
+  <%= render 'partials/form/errors', errors: @errors %>
+
+  <%= render 'partials/form/field' do %>
+    <%= label_tag :subject, nil, class: 'required' %>
+    <%= text_field_tag :subject, nil, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/field' do %>
+    <%= label_tag :content, nil, class: 'required' %>
+    <%= rich_text_area_tag :content, nil, class: 'trix-content bg-white w-full px-3 py-1 border-gray-300 border-2 rounded focus:outline-none focus:border-blue-300' %>
+  <% end %>
+
+  <%= render 'partials/form/centered' do %>
+    <%= submit_tag 'Send', class: button_classes %>
+  <% end %>
+
+  <div class="flex flex-row justify-center text-gray-700 text-center mt-2">
+    <%= link_to 'Cancel', dashboard_mailing_list_path, class: 'underline' %>
+  </div>
+<% end %>

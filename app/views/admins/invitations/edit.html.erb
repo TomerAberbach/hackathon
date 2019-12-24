@@ -1,0 +1,23 @@
+<% content_for(:title, 'Set Your Password') %>
+
+<%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render 'partials/form/errors', errors: resource.errors %>
+
+  <%= f.hidden_field :invitation_token, readonly: true %>
+
+  <% if f.object.class.require_password_on_accepting %>
+    <%= render 'partials/form/field' do %>
+      <%= f.label :password, class: 'required' %>
+      <%= f.password_field :password, autofocus: true, autocomplete: 'email', class: textbox_classes %>
+    <% end %>
+
+    <%= render 'partials/form/field' do %>
+      <%= f.label :password_confirmation, class: 'required' %>
+      <%= f.password_field :password_confirmation, autofocus: true, autocomplete: 'email', class: textbox_classes %>
+    <% end %>
+  <% end %>
+
+  <%= render 'partials/form/centered' do %>
+    <%= f.submit 'Set my password', class: button_classes %>
+  <% end %>
+<% end %>

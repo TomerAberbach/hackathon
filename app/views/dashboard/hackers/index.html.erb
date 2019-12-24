@@ -1,0 +1,45 @@
+<% content_for(:title, 'Hackers') %>
+
+<h1 class="text-3xl">Hackers</h1>
+
+<% if @hackers.any? %>
+  <%= render 'partials/table/table' do %>
+    <%= render 'partials/table/head' do %>
+      <%= render 'partials/table/heading', content: 'Email' %>
+      <%= render 'partials/table/heading', content: 'Name' %>
+      <%= render 'partials/table/heading', content: 'Checked In?' %>
+      <%= render 'partials/table/heading', content: 'Actions' %>
+    <% end %>
+    <tbody>
+      <% @hackers.each do |hacker| %>
+        <%= render 'partials/table/row' do %>
+          <%= render 'partials/table/cell', content: hacker.email %>
+          <%= render 'partials/table/cell', content: "#{hacker.first_name} #{hacker.last_name}" %>
+          <%= render 'partials/table/cell', content: hacker.checked_in ? 'Yes' : 'No' %>
+          <%= render 'partials/table/cell' do %>
+            <%= link_to 'Show', dashboard_hacker_path(hacker), class: 'underline' %>,
+            <% if hacker.checked_in %>
+              <%= link_to 'Uncheck In', uncheck_in_dashboard_hacker_path(hacker), method: :patch, class: 'underline' %>,
+            <% else %>
+              <%= link_to 'Check In', check_in_dashboard_hacker_path(hacker), method: :patch, class: 'underline' %>,
+            <% end %>
+            or
+            <%= link_to 'Delete', dashboard_hacker_path(hacker), method: :delete,
+                        data: { confirm: 'Are you sure?' }, class: 'underline' %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tbody>
+  <% end %>
+
+  <%= paginate @hackers %>
+
+  <p><%= @hackers.where(waitlisted: false).count %> registered out of <%= @metadata.capacity %> spaces.</p>
+  <p><%= @hackers.where(waitlisted: true).count %> waitlisted.</p>
+
+  <%= link_to 'Email hackers', email_dashboard_hackers_path, class: 'block underline mt-2' %>
+  <%= link_to 'Download CSV', dashboard_hackers_path(format: 'csv'), class: 'block underline mt-2' %>
+  <%= link_to 'Download resumes', resumes_dashboard_hackers_path, class: 'block underline mt-2' %>
+<% else %>
+  <p class="mt-2">There are no hackers signed up yet.</p>
+<% end %>

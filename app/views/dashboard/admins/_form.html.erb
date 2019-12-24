@@ -1,0 +1,16 @@
+<%= form_with(model: [:dashboard, @admin], local: true, class: 'mt-2') do |f| %>
+  <%= render 'partials/form/errors', errors: @admin.errors %>
+
+  <%= render 'partials/form/field' do %>
+    <%= f.label :email, class: 'required' %>
+    <%= f.email_field :email, class: textbox_classes %>
+  <% end %>
+
+  <%= render 'partials/form/centered' do %>
+    <%= f.submit 'Invite', class: button_classes %>
+  <% end %>
+
+  <div class="flex flex-row justify-center text-gray-700 text-center mt-2">
+    <%= link_to 'Cancel', dashboard_admins_path, class: 'underline' %>
+  </div>
+<% end %>

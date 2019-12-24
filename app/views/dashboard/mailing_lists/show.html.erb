@@ -1,0 +1,27 @@
+<% content_for(:title, 'Mailing List') %>
+
+<h1 class="text-3xl">Mailing List</h1>
+
+<% if @emails.any? %>
+  <%= render 'partials/table/table' do %>
+    <%= render 'partials/table/head' do %>
+      <%= render 'partials/table/heading', content: 'Email' %>
+      <%= render 'partials/table/heading', content: 'Actions' %>
+    <% end %>
+    <tbody>
+      <% @emails.each do |email| %>
+        <%= render 'partials/table/row' do %>
+          <%= render 'partials/table/cell', content: email %>
+          <%= render 'partials/table/cell' do %>
+            <%= link_to 'Delete', dashboard_mailing_list_path(email: email), method: :delete,
+                        data: { confirm: 'Are you sure?' }, class: 'underline' %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tbody>
+  <% end %>
+
+  <%= link_to 'Email mailing list', email_dashboard_mailing_list_path, class: 'block underline mt-2' %>
+<% else %>
+  <p class="mt-2">There are no hackers signed up yet.</p>
+<% end %>
