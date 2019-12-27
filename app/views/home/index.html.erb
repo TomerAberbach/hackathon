@@ -5,7 +5,7 @@
     <div><%= @metadata.mlh_banner_code.html_safe %></div>
   <% end %>
 
-  <nav class="fixed bg-white text-xl text-gray-700 w-full p-6 shadow">
+  <nav class="z-50 fixed bg-white text-xl text-gray-700 w-full p-6 shadow">
     <ul class="hidden md:flex flex-row justify-end w-full px-6">
       <li class="font-bold mr-auto"><%= @metadata.name %></li>
       <% @sections.each_with_index do |section, i| %>
