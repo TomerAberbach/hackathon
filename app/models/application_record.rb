@@ -57,7 +57,7 @@ class ApplicationRecord < ActiveRecord::Base
   def self.validates_documentness_of(*attributes)
     validates(
       *attributes,
-      allow_nil: true,
+      attached: true,
       content_type: {
         in: %w[text/plain application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document],
         message: 'must be a txt, pdf, doc, or docx'
